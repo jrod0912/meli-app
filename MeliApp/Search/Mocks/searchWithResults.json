@@ -1,0 +1,452 @@
+{
+    "site_id": "MCO",
+    "country_default_time_zone": "GMT-05:00",
+    "query": "Mac Mini",
+    "paging": {
+        "total": 98,
+        "primary_results": 50,
+        "offset": 0,
+        "limit": 1
+    },
+    "results": [
+        {
+            "id": "MCO602661276",
+            "site_id": "MCO",
+            "title": "Apple Mac Mini M1 (2020) 8 Core 256 Gb  16gb Ram",
+            "seller": {
+                "id": 82511148,
+                "permalink": null,
+                "registration_date": null,
+                "car_dealer": false,
+                "real_estate_agency": false,
+                "tags": null
+            },
+            "price": 4990000,
+            "prices": {
+                "id": "MCO602661276",
+                "prices": [
+                    {
+                        "id": "5",
+                        "type": "standard",
+                        "amount": 4990000,
+                        "regular_amount": null,
+                        "currency_id": "COP",
+                        "last_updated": "2022-02-02T20:07:11Z",
+                        "conditions": {
+                            "context_restrictions": [],
+                            "start_time": null,
+                            "end_time": null,
+                            "eligible": true
+                        },
+                        "exchange_rate_context": "DEFAULT",
+                        "metadata": {}
+                    }
+                ],
+                "presentation": {
+                    "display_currency": "COP"
+                },
+                "payment_method_prices": [],
+                "reference_prices": [],
+                "purchase_discounts": []
+            },
+            "sale_price": null,
+            "currency_id": "COP",
+            "available_quantity": 1,
+            "sold_quantity": 5,
+            "buying_mode": "buy_it_now",
+            "listing_type_id": "gold_special",
+            "stop_time": "2041-01-14T04:00:00.000Z",
+            "condition": "new",
+            "permalink": "https://articulo.mercadolibre.com.co/MCO-602661276-apple-mac-mini-m1-2020-8-core-256-gb-16gb-ram-_JM",
+            "thumbnail": "http://http2.mlstatic.com/D_991158-MCO44638673412_012021-O.jpg",
+            "thumbnail_id": "991158-MCO44638673412_012021",
+            "accepts_mercadopago": true,
+            "installments": {
+                "quantity": 36,
+                "amount": 138611.11,
+                "rate": 0,
+                "currency_id": "COP"
+            },
+            "address": {
+                "state_id": "CO-DC",
+                "state_name": "Bogotá D.C.",
+                "city_id": "TUNPQ0tFTjQyODYy",
+                "city_name": "Kennedy"
+            },
+            "shipping": {
+                "free_shipping": true,
+                "mode": "me2",
+                "tags": [
+                    "mandatory_free_shipping"
+                ],
+                "logistic_type": "xd_drop_off",
+                "store_pick_up": false
+            },
+            "seller_address": {
+                "id": "",
+                "comment": "",
+                "address_line": "",
+                "zip_code": "",
+                "country": {
+                    "id": "CO",
+                    "name": "Colombia"
+                },
+                "state": {
+                    "id": "CO-DC",
+                    "name": "Bogotá D.C."
+                },
+                "city": {
+                    "id": "TUNPQ0tFTjQyODYy",
+                    "name": "Kennedy"
+                },
+                "latitude": "",
+                "longitude": ""
+            },
+            "attributes": [
+                {
+                    "source": 3045741222775799,
+                    "id": "BRAND",
+                    "value_struct": null,
+                    "values": [
+                        {
+                            "id": "9344",
+                            "name": "Apple",
+                            "struct": null,
+                            "source": 3045741222775799
+                        }
+                    ],
+                    "attribute_group_id": "OTHERS",
+                    "name": "Marca",
+                    "value_id": "9344",
+                    "value_name": "Apple",
+                    "attribute_group_name": "Otros"
+                },
+                {
+                    "value_struct": null,
+                    "attribute_group_id": "OTHERS",
+                    "attribute_group_name": "Otros",
+                    "id": "ITEM_CONDITION",
+                    "name": "Condición del ítem",
+                    "values": [
+                        {
+                            "id": "2230284",
+                            "name": "Nuevo",
+                            "struct": null,
+                            "source": 3045741222775799
+                        }
+                    ],
+                    "source": 3045741222775799,
+                    "value_id": "2230284",
+                    "value_name": "Nuevo"
+                },
+                {
+                    "values": [
+                        {
+                            "id": null,
+                            "name": "Mac Mini M1 CHIP",
+                            "struct": null,
+                            "source": 3045741222775799
+                        }
+                    ],
+                    "attribute_group_id": "OTHERS",
+                    "source": 3045741222775799,
+                    "name": "Línea",
+                    "value_name": "Mac Mini M1 CHIP",
+                    "value_struct": null,
+                    "id": "LINE",
+                    "value_id": null,
+                    "attribute_group_name": "Otros"
+                },
+                {
+                    "source": 3045741222775799,
+                    "id": "MODEL",
+                    "value_id": null,
+                    "value_struct": null,
+                    "attribute_group_id": "OTHERS",
+                    "name": "Modelo",
+                    "value_name": "A2348",
+                    "values": [
+                        {
+                            "name": "A2348",
+                            "struct": null,
+                            "source": 3045741222775799,
+                            "id": null
+                        }
+                    ],
+                    "attribute_group_name": "Otros"
+                }
+            ],
+            "original_price": null,
+            "category_id": "MCO176186",
+            "official_store_id": null,
+            "domain_id": "MCO-MINI_PCS",
+            "catalog_product_id": null,
+            "tags": [
+                "good_quality_picture",
+                "good_quality_thumbnail",
+                "loyalty_discount_eligible",
+                "immediate_payment",
+                "cart_eligible"
+            ],
+            "order_backend": 1,
+            "use_thumbnail_id": false,
+            "offer_score": null,
+            "offer_share": null,
+            "match_score": null,
+            "winner_item_id": null,
+            "melicoin": null
+        }
+    ],
+    "sort": {
+        "id": "relevance",
+        "name": "Más relevantes"
+    },
+    "available_sorts": [
+        {
+            "id": "price_asc",
+            "name": "Menor precio"
+        },
+        {
+            "id": "price_desc",
+            "name": "Mayor precio"
+        }
+    ],
+    "filters": [
+        {
+            "id": "category",
+            "name": "Categorías",
+            "type": "text",
+            "values": [
+                {
+                    "id": "MCO176186",
+                    "name": "Mini PCs",
+                    "path_from_root": [
+                        {
+                            "id": "MCO1648",
+                            "name": "Computación"
+                        },
+                        {
+                            "id": "MCO430637",
+                            "name": "PC de Escritorio"
+                        },
+                        {
+                            "id": "MCO176186",
+                            "name": "Mini PCs"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "available_filters": [
+        {
+            "id": "state",
+            "name": "Ubicación",
+            "type": "text",
+            "values": [
+                {
+                    "id": "CO-DC",
+                    "name": "Bogotá D.C.",
+                    "results": 59
+                },
+                {
+                    "id": "CO-VAC",
+                    "name": "Valle Del Cauca",
+                    "results": 14
+                },
+                {
+                    "id": "CO-ANT",
+                    "name": "Antioquia",
+                    "results": 13
+                },
+                {
+                    "id": "CO-SAN",
+                    "name": "Santander",
+                    "results": 4
+                },
+                {
+                    "id": "CO-BOY",
+                    "name": "Boyaca",
+                    "results": 3
+                },
+                {
+                    "id": "CO-ATL",
+                    "name": "Atlantico",
+                    "results": 1
+                },
+                {
+                    "id": "CO-CUN",
+                    "name": "Cundinamarca",
+                    "results": 1
+                },
+                {
+                    "id": "CO-LAG",
+                    "name": "Guajira",
+                    "results": 1
+                },
+                {
+                    "id": "CO-NAR",
+                    "name": "Nariño",
+                    "results": 1
+                },
+                {
+                    "id": "CO-SUC",
+                    "name": "Sucre",
+                    "results": 1
+                }
+            ]
+        },
+        {
+            "id": "price",
+            "name": "Precio",
+            "type": "range",
+            "values": [
+                {
+                    "id": "*-1000000.0",
+                    "name": "Hasta $1.000.000",
+                    "results": 30
+                },
+                {
+                    "id": "1000000.0-4000000.0",
+                    "name": "$1.000.000 a $4.000.000",
+                    "results": 33
+                },
+                {
+                    "id": "4000000.0-*",
+                    "name": "Más de $4.000.000",
+                    "results": 35
+                }
+            ]
+        },
+        {
+            "id": "accepts_mercadopago",
+            "name": "Filtro por MercadoPago",
+            "type": "boolean",
+            "values": [
+                {
+                    "id": "yes",
+                    "name": "Con MercadoPago",
+                    "results": 98
+                }
+            ]
+        },
+        {
+            "id": "installments",
+            "name": "Pago",
+            "type": "text",
+            "values": [
+                {
+                    "id": "yes",
+                    "name": "En cuotas",
+                    "results": 98
+                },
+                {
+                    "id": "no_interest",
+                    "name": "Cuotas sin interés",
+                    "results": 33
+                }
+            ]
+        },
+        {
+            "id": "shipping",
+            "name": "Envío",
+            "type": "text",
+            "values": [
+                {
+                    "id": "mercadoenvios",
+                    "name": "Mercado Envíos",
+                    "results": 98
+                }
+            ]
+        },
+        {
+            "id": "power_seller",
+            "name": "Filtro por calidad de vendedores",
+            "type": "boolean",
+            "values": [
+                {
+                    "id": "yes",
+                    "name": "Mejores vendedores",
+                    "results": 40
+                }
+            ]
+        },
+        {
+            "id": "since",
+            "name": "Filtro por fecha de comienzo",
+            "type": "text",
+            "values": [
+                {
+                    "id": "today",
+                    "name": "Publicados hoy",
+                    "results": 1
+                }
+            ]
+        },
+        {
+            "id": "has_video",
+            "name": "Filtro por publicaciones con video",
+            "type": "boolean",
+            "values": [
+                {
+                    "id": "yes",
+                    "name": "Publicaciones con video",
+                    "results": 21
+                }
+            ]
+        },
+        {
+            "id": "has_pictures",
+            "name": "Filtro por publicaciones con imágenes",
+            "type": "boolean",
+            "values": [
+                {
+                    "id": "yes",
+                    "name": "Con fotos",
+                    "results": 98
+                }
+            ]
+        },
+        {
+            "id": "shipping_cost",
+            "name": "Costo de envío",
+            "type": "text",
+            "values": [
+                {
+                    "id": "free",
+                    "name": "Gratis",
+                    "results": 88
+                }
+            ]
+        },
+        {
+            "id": "ITEM_CONDITION",
+            "name": "Condición",
+            "type": "STRING",
+            "values": [
+                {
+                    "id": "2230284",
+                    "name": "Nuevo",
+                    "results": 55
+                },
+                {
+                    "id": "2230581",
+                    "name": "Usado",
+                    "results": 43
+                }
+            ]
+        },
+        {
+            "id": "SHIPPING_ORIGIN",
+            "name": "Tipo de compra",
+            "type": "STRING",
+            "values": [
+                {
+                    "id": "10215068",
+                    "name": "Local",
+                    "results": 98
+                }
+            ]
+        }
+    ]
+}

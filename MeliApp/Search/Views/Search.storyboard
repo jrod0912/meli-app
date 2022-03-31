@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="f7J-hg-nJF">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--MeliApp-->
+        <scene sceneID="AbQ-FB-JDI">
+            <objects>
+                <viewController id="qIq-LM-ah5" customClass="SearchViewController" customModule="MeliApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wjn-ig-Cqi">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="20" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="7JA-kW-rQc">
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SearchItemViewCell" id="Z5i-Kk-T8f" customClass="SearchItemViewCell" customModule="MeliApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Z5i-Kk-T8f" id="sHF-UF-EKv">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                    </tableViewCell>
+                                </prototypes>
+                                <sections/>
+                                <connections>
+                                    <outlet property="dataSource" destination="qIq-LM-ah5" id="GwF-Tf-K5v"/>
+                                    <outlet property="delegate" destination="qIq-LM-ah5" id="bIB-62-UHO"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="aJS-Uw-Pe4"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="7JA-kW-rQc" firstAttribute="top" secondItem="aJS-Uw-Pe4" secondAttribute="top" id="RLt-4T-V0f"/>
+                            <constraint firstItem="7JA-kW-rQc" firstAttribute="leading" secondItem="aJS-Uw-Pe4" secondAttribute="leading" id="gJN-hC-bMx"/>
+                            <constraint firstAttribute="bottom" secondItem="7JA-kW-rQc" secondAttribute="bottom" id="ntR-l4-m7u"/>
+                            <constraint firstItem="7JA-kW-rQc" firstAttribute="trailing" secondItem="aJS-Uw-Pe4" secondAttribute="trailing" id="tH3-7F-lBP"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="MeliApp" id="El4-Z8-d8b">
+                        <barButtonItem key="backBarButtonItem" title=" " id="mXU-EP-zA9"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="searchItemsTableView" destination="7JA-kW-rQc" id="J5S-H8-7ZV"/>
+                        <segue destination="eau-SL-ZH2" kind="show" identifier="showItemDetails" id="4mW-RM-SWx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="j4P-UK-J0M" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1013.0434782608696" y="71.651785714285708"/>
+        </scene>
+        <!--ItemDetails-->
+        <scene sceneID="zeW-qY-vwr">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ItemDetails" referencedIdentifier="ItemDetails" id="eau-SL-ZH2" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="U9d-cV-P8K"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dVL-zS-aqg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1746" y="72"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="fjA-av-eK5">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="f7J-hg-nJF" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="qIw-fl-MVo">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="qIq-LM-ah5" kind="relationship" relationship="rootViewController" id="tMs-KZ-dBb"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rac-ri-nD2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="102.89855072463769" y="71.651785714285708"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

@@ -1,0 +1,430 @@
+{
+    "id": "MCO599428039",
+    "site_id": "MCO",
+    "title": "Nueva Mac Mini M1 (2020) 8 Core Cpu-gpu - 512 Gb - 8gb Ram",
+    "subtitle": null,
+    "seller_id": 22831793,
+    "category_id": "MCO176186",
+    "official_store_id": null,
+    "price": 4686594,
+    "base_price": 4686594,
+    "original_price": null,
+    "currency_id": "COP",
+    "initial_quantity": 51,
+    "available_quantity": 1,
+    "sold_quantity": 1,
+    "sale_terms": [
+        {
+            "id": "WARRANTY_TIME",
+            "name": "Tiempo de garantía",
+            "value_id": null,
+            "value_name": "12 meses",
+            "value_struct": {
+                "number": 12,
+                "unit": "meses"
+            },
+            "values": [
+                {
+                    "id": null,
+                    "name": "12 meses",
+                    "struct": {
+                        "number": 12,
+                        "unit": "meses"
+                    }
+                }
+            ]
+        },
+        {
+            "id": "WARRANTY_TYPE",
+            "name": "Tipo de garantía",
+            "value_id": "2230279",
+            "value_name": "Garantía de fábrica",
+            "value_struct": null,
+            "values": [
+                {
+                    "id": "2230279",
+                    "name": "Garantía de fábrica",
+                    "struct": null
+                }
+            ]
+        }
+    ],
+    "buying_mode": "buy_it_now",
+    "listing_type_id": "gold_special",
+    "start_time": "2020-12-24T15:30:55.000Z",
+    "stop_time": "2040-12-19T04:00:00.000Z",
+    "condition": "new",
+    "permalink": "https://articulo.mercadolibre.com.co/MCO-599428039-nueva-mac-mini-m1-2020-8-core-cpu-gpu-512-gb-8gb-ram-_JM",
+    "thumbnail_id": "629989-MCO48524283498_122021",
+    "thumbnail": "http://http2.mlstatic.com/D_629989-MCO48524283498_122021-I.jpg",
+    "secure_thumbnail": "https://http2.mlstatic.com/D_629989-MCO48524283498_122021-I.jpg",
+    "pictures": [
+        {
+            "id": "629989-MCO48524283498_122021",
+            "url": "http://http2.mlstatic.com/D_629989-MCO48524283498_122021-O.jpg",
+            "secure_url": "https://http2.mlstatic.com/D_629989-MCO48524283498_122021-O.jpg",
+            "size": "500x249",
+            "max_size": "1293x646",
+            "quality": ""
+        },
+        {
+            "id": "621291-MCO44244032465_122020",
+            "url": "http://http2.mlstatic.com/D_621291-MCO44244032465_122020-O.jpg",
+            "secure_url": "https://http2.mlstatic.com/D_621291-MCO44244032465_122020-O.jpg",
+            "size": "478x500",
+            "max_size": "1148x1200",
+            "quality": ""
+        },
+        {
+            "id": "769681-MCO44244032632_122020",
+            "url": "http://http2.mlstatic.com/D_769681-MCO44244032632_122020-O.jpg",
+            "secure_url": "https://http2.mlstatic.com/D_769681-MCO44244032632_122020-O.jpg",
+            "size": "500x259",
+            "max_size": "1200x623",
+            "quality": ""
+        },
+        {
+            "id": "892560-MCO44244034605_122020",
+            "url": "http://http2.mlstatic.com/D_892560-MCO44244034605_122020-O.jpg",
+            "secure_url": "https://http2.mlstatic.com/D_892560-MCO44244034605_122020-O.jpg",
+            "size": "500x368",
+            "max_size": "690x509",
+            "quality": ""
+        },
+        {
+            "id": "789621-MCO44244034636_122020",
+            "url": "http://http2.mlstatic.com/D_789621-MCO44244034636_122020-O.jpg",
+            "secure_url": "https://http2.mlstatic.com/D_789621-MCO44244034636_122020-O.jpg",
+            "size": "500x500",
+            "max_size": "1200x1200",
+            "quality": ""
+        },
+        {
+            "id": "648565-MCO44244048048_122020",
+            "url": "http://http2.mlstatic.com/D_648565-MCO44244048048_122020-O.jpg",
+            "secure_url": "https://http2.mlstatic.com/D_648565-MCO44244048048_122020-O.jpg",
+            "size": "500x447",
+            "max_size": "751x672",
+            "quality": ""
+        },
+        {
+            "id": "716100-MCO44244032690_122020",
+            "url": "http://http2.mlstatic.com/D_716100-MCO44244032690_122020-O.jpg",
+            "secure_url": "https://http2.mlstatic.com/D_716100-MCO44244032690_122020-O.jpg",
+            "size": "500x381",
+            "max_size": "855x653",
+            "quality": ""
+        },
+        {
+            "id": "895314-MCO44244038462_122020",
+            "url": "http://http2.mlstatic.com/D_895314-MCO44244038462_122020-O.jpg",
+            "secure_url": "https://http2.mlstatic.com/D_895314-MCO44244038462_122020-O.jpg",
+            "size": "500x277",
+            "max_size": "1198x664",
+            "quality": ""
+        }
+    ],
+    "video_id": null,
+    "descriptions": [],
+    "accepts_mercadopago": true,
+    "non_mercado_pago_payment_methods": [],
+    "shipping": {
+        "mode": "me2",
+        "free_methods": [
+            {
+                "id": 501745,
+                "rule": {
+                    "default": true,
+                    "free_mode": "country",
+                    "free_shipping_flag": true,
+                    "value": null
+                }
+            }
+        ],
+        "tags": [
+            "mandatory_free_shipping"
+        ],
+        "dimensions": null,
+        "local_pick_up": true,
+        "free_shipping": true,
+        "logistic_type": "cross_docking",
+        "store_pick_up": false
+    },
+    "international_delivery_mode": "none",
+    "seller_address": {
+        "city": {
+            "id": "TUNPQ0NBTDYyZDA0",
+            "name": "Cali"
+        },
+        "state": {
+            "id": "CO-VAC",
+            "name": "Valle Del Cauca"
+        },
+        "country": {
+            "id": "CO",
+            "name": "Colombia"
+        },
+        "search_location": {
+            "city": {
+                "id": "TUNPQ0NBTDYyZDA0",
+                "name": "Cali"
+            },
+            "state": {
+                "id": "TUNPUFZBTGExNmNjNg",
+                "name": "Valle Del Cauca"
+            }
+        },
+        "id": 173744252
+    },
+    "seller_contact": null,
+    "location": {},
+    "coverage_areas": [],
+    "attributes": [
+        {
+            "id": "BRAND",
+            "name": "Marca",
+            "value_id": "9344",
+            "value_name": "Apple",
+            "value_struct": null,
+            "values": [
+                {
+                    "id": "9344",
+                    "name": "Apple",
+                    "struct": null
+                }
+            ],
+            "attribute_group_id": "OTHERS",
+            "attribute_group_name": "Otros"
+        },
+        {
+            "id": "CONNECTIVITY",
+            "name": "Conectividad",
+            "value_id": null,
+            "value_name": "WIFI 6,Thunderbolt,HDMI,Ethernet",
+            "value_struct": null,
+            "values": [
+                {
+                    "id": null,
+                    "name": "WIFI 6",
+                    "struct": null
+                },
+                {
+                    "id": null,
+                    "name": "Thunderbolt",
+                    "struct": null
+                },
+                {
+                    "id": null,
+                    "name": "HDMI",
+                    "struct": null
+                },
+                {
+                    "id": null,
+                    "name": "Ethernet",
+                    "struct": null
+                }
+            ],
+            "attribute_group_id": "OTHERS",
+            "attribute_group_name": "Otros"
+        },
+        {
+            "id": "ITEM_CONDITION",
+            "name": "Condición del ítem",
+            "value_id": "2230284",
+            "value_name": "Nuevo",
+            "value_struct": null,
+            "values": [
+                {
+                    "id": "2230284",
+                    "name": "Nuevo",
+                    "struct": null
+                }
+            ],
+            "attribute_group_id": "OTHERS",
+            "attribute_group_name": "Otros"
+        },
+        {
+            "id": "LINE",
+            "name": "Línea",
+            "value_id": null,
+            "value_name": "Mac Mini",
+            "value_struct": null,
+            "values": [
+                {
+                    "id": null,
+                    "name": "Mac Mini",
+                    "struct": null
+                }
+            ],
+            "attribute_group_id": "OTHERS",
+            "attribute_group_name": "Otros"
+        },
+        {
+            "id": "MODEL",
+            "name": "Modelo",
+            "value_id": "5760069",
+            "value_name": "Mac Mini 3.1 GHz",
+            "value_struct": null,
+            "values": [
+                {
+                    "id": "5760069",
+                    "name": "Mac Mini 3.1 GHz",
+                    "struct": null
+                }
+            ],
+            "attribute_group_id": "OTHERS",
+            "attribute_group_name": "Otros"
+        },
+        {
+            "id": "OS_NAME",
+            "name": "Nombre del sistema operativo",
+            "value_id": "7232871",
+            "value_name": "macOS",
+            "value_struct": null,
+            "values": [
+                {
+                    "id": "7232871",
+                    "name": "macOS",
+                    "struct": null
+                }
+            ],
+            "attribute_group_id": "OTHERS",
+            "attribute_group_name": "Otros"
+        },
+        {
+            "id": "OS_VERSION",
+            "name": "Versión del sistema operativo",
+            "value_id": null,
+            "value_name": "MacOS Big Sur",
+            "value_struct": null,
+            "values": [
+                {
+                    "id": null,
+                    "name": "MacOS Big Sur",
+                    "struct": null
+                }
+            ],
+            "attribute_group_id": "OTHERS",
+            "attribute_group_name": "Otros"
+        },
+        {
+            "id": "PROCESSOR",
+            "name": "Procesador",
+            "value_id": null,
+            "value_name": "M1",
+            "value_struct": null,
+            "values": [
+                {
+                    "id": null,
+                    "name": "M1",
+                    "struct": null
+                }
+            ],
+            "attribute_group_id": "OTHERS",
+            "attribute_group_name": "Otros"
+        },
+        {
+            "id": "RAM_MEMORY",
+            "name": "Memoria RAM",
+            "value_id": "579564",
+            "value_name": "8 GB",
+            "value_struct": {
+                "number": 8,
+                "unit": "GB"
+            },
+            "values": [
+                {
+                    "id": "579564",
+                    "name": "8 GB",
+                    "struct": {
+                        "number": 8,
+                        "unit": "GB"
+                    }
+                }
+            ],
+            "attribute_group_id": "OTHERS",
+            "attribute_group_name": "Otros"
+        },
+        {
+            "id": "STORAGE_CAPACITY",
+            "name": "Capacidad de almacenamiento",
+            "value_id": null,
+            "value_name": "512 GB",
+            "value_struct": {
+                "number": 512,
+                "unit": "GB"
+            },
+            "values": [
+                {
+                    "id": null,
+                    "name": "512 GB",
+                    "struct": {
+                        "number": 512,
+                        "unit": "GB"
+                    }
+                }
+            ],
+            "attribute_group_id": "OTHERS",
+            "attribute_group_name": "Otros"
+        },
+        {
+            "id": "VIDEO_PORTS",
+            "name": "Puertos de video",
+            "value_id": "2511540",
+            "value_name": "HDMI",
+            "value_struct": null,
+            "values": [
+                {
+                    "id": "2511540",
+                    "name": "HDMI",
+                    "struct": null
+                }
+            ],
+            "attribute_group_id": "OTHERS",
+            "attribute_group_name": "Otros"
+        },
+        {
+            "id": "VOLTAGE",
+            "name": "Voltaje",
+            "value_id": "-1",
+            "value_name": null,
+            "value_struct": null,
+            "values": [
+                {
+                    "id": "-1",
+                    "name": null,
+                    "struct": null
+                }
+            ],
+            "attribute_group_id": "OTHERS",
+            "attribute_group_name": "Otros"
+        }
+    ],
+    "warnings": [],
+    "listing_source": "",
+    "variations": [],
+    "status": "active",
+    "sub_status": [],
+    "tags": [
+        "good_quality_picture",
+        "good_quality_thumbnail",
+        "loyalty_discount_eligible",
+        "immediate_payment",
+        "cart_eligible"
+    ],
+    "warranty": "Garantía de fábrica: 12 meses",
+    "catalog_product_id": "MCO13092053",
+    "domain_id": "MCO-MINI_PCS",
+    "parent_item_id": null,
+    "differential_pricing": null,
+    "deal_ids": [],
+    "automatic_relist": false,
+    "date_created": "2020-12-24T15:30:55.000Z",
+    "last_updated": "2022-02-03T03:05:18.405Z",
+    "health": 0.77,
+    "catalog_listing": false,
+    "channels": [
+        "marketplace",
+        "mshops"
+    ]
+}

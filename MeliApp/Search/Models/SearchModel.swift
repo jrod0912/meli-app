@@ -31,7 +31,7 @@ struct SearchResult: Codable, Equatable {
     let price: Int
     let condition: String
     let thumbnail: String
-    let installments: SearchResultInstallment
+    let installments: SearchResultInstallment?
     let shipping: SearchResultShipping
 }
 

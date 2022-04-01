@@ -60,10 +60,10 @@
             </objects>
             <point key="canvasLocation" x="1013.0434782608696" y="71.651785714285708"/>
         </scene>
-        <!--ItemDetails-->
+        <!--ItemDetailsViewController-->
         <scene sceneID="zeW-qY-vwr">
             <objects>
-                <viewControllerPlaceholder storyboardName="ItemDetails" referencedIdentifier="ItemDetails" id="eau-SL-ZH2" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardIdentifier="ItemDetailsViewController" storyboardName="ItemDetails" referencedIdentifier="ItemDetailsViewController" id="eau-SL-ZH2" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="U9d-cV-P8K"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dVL-zS-aqg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

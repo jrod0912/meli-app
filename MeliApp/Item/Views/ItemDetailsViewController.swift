@@ -21,10 +21,12 @@ class ItemDetailsViewController: UIViewController {
     
     private var disposeBag = DisposeBag()
     private var viewModel = ItemViewModel()
+    
+    
     private var itemImagesURL:[String] = []
     private var itemAttributes:[ItemAttribute] = []
     
-    var selectedItemId:String = ""
+    private var selectedItemId:String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +36,10 @@ class ItemDetailsViewController: UIViewController {
         loadItemDataSubscription()
         registerTableViewCell()
         //TODO: Data binding (no creo que haga falta)
+    }
+    
+    func prepareView(itemId: String) {
+        self.selectedItemId = itemId
     }
     
     private func loadItemDataSubscription(){

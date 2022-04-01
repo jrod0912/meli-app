@@ -55,28 +55,3 @@ struct MockItemProvider: ItemProviderProtocol, MockProviderProtocol {
         })
     }
 }
-
-enum DecodeError: Error, Equatable {
-    case typeMismatch
-    case keyNotFound
-    case valueNotFound
-    case dataCorrupted
-    case unknownError
-}
-
-extension DecodeError: LocalizedError {
-    public var errorDescription: String? {
-        switch self {
-        case .typeMismatch:
-            return NSLocalizedString("Type mismatch.",comment: "Type mismatch")
-        case .keyNotFound:
-            return NSLocalizedString("Failed to decode data from bundle, missing key.",comment: "Key Not Found")
-        case .valueNotFound:
-            return NSLocalizedString("Failed to decode data from bundle, missing value.",comment: "Value Not Found")
-        case .dataCorrupted:
-            return NSLocalizedString("Invalid JSON.",comment: "Data Corrupted")
-        case .unknownError:
-            return NSLocalizedString("Failed to decode JSON.",comment: "Unexpected Error")
-        }
-    }
-}

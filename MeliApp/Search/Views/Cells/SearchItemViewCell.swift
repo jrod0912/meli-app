@@ -24,4 +24,12 @@ class SearchItemViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
+    func configureCell(viewModel: SearchResultViewModel){
+        itemImageView.getImageFromURL(imageURLString: viewModel.thumbnailUrl)
+        itemTitle.text = viewModel.title
+        itemPrice.text = viewModel.price
+        itemInstallments.text = viewModel.installments
+        itemHasFreeShipping.text = viewModel.hasFreeShipping
+    }
+    
 }

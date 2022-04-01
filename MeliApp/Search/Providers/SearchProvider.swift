@@ -19,7 +19,8 @@ struct SearchProvider: SearchProviderProtocol {
         let parameters = ["q":query]
         manager.performAPIRequest(with: parameters) { (results, error) in
             guard error == nil, let _ = results else {
-                return completion(.failure(error!))
+                return completion(.failure(CustomError.search(type: .notFound)))
+                //return completion(.failure(error!))
             }
             
             if let model = results {

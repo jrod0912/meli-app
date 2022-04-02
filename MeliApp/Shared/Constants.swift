@@ -25,5 +25,6 @@ struct Constants {
     
     struct Images {
         static let placeholderImage: UIImage = UIImage(systemName: "photo.on.rectangle.angled")!
+        static let cache = URLCache.shared
     }
 }

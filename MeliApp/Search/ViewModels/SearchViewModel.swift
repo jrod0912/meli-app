@@ -58,6 +58,7 @@ class SearchViewModel {
                     self.showErrorSubject.onNext(true)
                     self.reloadTableData.onNext(true)
                 } else {
+                    self.prefetchImages()
                     self.showErrorSubject.onNext(false)
                     self.prepareTableDataSource(results: results)
                     self.reloadTableData.onNext(true)
@@ -120,6 +121,10 @@ class SearchViewModel {
     private func resetTableDataSource() {
         numberOfRows = 0
         tableDataSource = []
+    }
+    
+    private func prefetchImages() {
+        _ = tableDataSource.map { UIImageView().getImageFromURL(imageURLString: $0.thumbnailUrl) }
     }
 }
 

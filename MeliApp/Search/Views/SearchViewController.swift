@@ -145,7 +145,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
 extension SearchViewController {
     
     private func showLoadingViewSubscription() {
-        viewModel.showLoadingSubject.debug().subscribe(onNext:{ [weak self] show in
+        viewModel.showLoadingSubject.subscribe(onNext:{ [weak self] show in
             guard let self = self else { return }
             
             DispatchQueue.main.asyncAfter(deadline: .now() + ((show) ? 0.0 : 1.5)) {
@@ -155,7 +155,7 @@ extension SearchViewController {
     }
 
     private func showErrorSubscription() {
-        viewModel.showErrorSubject.debug().subscribe(onNext:{ [weak self] error in
+        viewModel.showErrorSubject.subscribe(onNext:{ [weak self] error in
             guard let self = self else { return }
             DispatchQueue.main.asyncAfter(deadline: .now() + ((error) ? 1.5 : 0.0)) {
                 (!error) ? self.errorView.fadeOut() : self.errorView.fadeIn()
@@ -164,16 +164,17 @@ extension SearchViewController {
     }
     
     private func reloadDataSubscription(){
-        viewModel.reloadTableData.debug().subscribe { [weak self] _ in
+        viewModel.reloadTableData.subscribe { [weak self] _ in
             guard let self = self else { return }
             DispatchQueue.main.async {
+                self.searchItemsTableView.setContentOffset(CGPoint.zero, animated: true) //reset scroll
                 self.searchItemsTableView.reloadData()
             }
         }.disposed(by: disposeBag)
     }
     
     private func selectedItemSubscription(){
-        viewModel.cellSelected.debug().subscribe { [weak self] event in
+        viewModel.cellSelected.subscribe { [weak self] event in
             guard let self = self else { return }
             guard let selected = event.element else { return }
             DispatchQueue.main.async{

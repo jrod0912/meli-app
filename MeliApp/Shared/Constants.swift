@@ -14,10 +14,13 @@ struct Constants {
         static let SEARCH_ITEM_VIEW_CELL = "SearchItemViewCell"
         static let IMAGES_CAROUSEL_VIEW_CELL = "imageCarouselCell"
         static let ITEM_ATTRIBUTES_VIEW_CELL = "ItemAttributesTableViewCell"
+        static let ITEM_DETAILS_VIEW_CONTROLLER = "ItemDetailsViewController"
     }
     
     struct PlaceholderText {
         static let SEARCH_BAR_PLACEHOLDER = "Buscar en Mercado Libre..."
+        static let INSTALLMENTS_PLACEHOLDER = "en {cantidad_cuotas}x {monto_cuotas}"
+        static let FREE_SHIPPING_PLACEHOLDER = "Envío Gratuito"
     }
     
     struct Images {

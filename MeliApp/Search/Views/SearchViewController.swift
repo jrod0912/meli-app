@@ -17,11 +17,13 @@ class SearchViewController: UIViewController {
     private var disposeBag = DisposeBag()
     private var viewModel = SearchViewModel()
     private var errorView = ErrorView()
+    private var loadingView = UIActivityIndicatorView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         setNavigationBarImageView()
+        setupLoadingView()
         setupSubscriptions()
         setupTableView()
         configureSearchBarController()
@@ -35,6 +37,15 @@ class SearchViewController: UIViewController {
         navigationItem.titleView = imageView
     }
     
+    func setupLoadingView() {
+        loadingView = UIActivityIndicatorView(frame: self.view.frame)
+        loadingView.style = .large
+        loadingView.color = .systemBlue
+        loadingView.center = self.view.center
+        loadingView.backgroundColor = .white
+        self.view.addSubview(loadingView)
+    }
+    
     func setupSubscriptions(){
         showErrorSubscription()
         showLoadingViewSubscription()
@@ -43,7 +54,6 @@ class SearchViewController: UIViewController {
     }
     
     func setupTableView() {
-        
         searchItemsTableView.backgroundView = errorView
         searchItemsTableView.rowHeight = UITableView.automaticDimension
         registerTableViewCell()
@@ -65,26 +75,17 @@ class SearchViewController: UIViewController {
         activityIndicatorView.center = loaderView.center
         loaderView.addSubview(activityIndicatorView)
         activityIndicatorView.startAnimating()
-        
         return loaderView
     }
     
     private func navigateToItemDetailsWithSearchResult(_ searchResultVM: SearchResultViewModel) {
-        guard let controller = storyboard?.instantiateViewController(withIdentifier: "ItemDetailsViewController") as? ItemDetailsViewController else {
+        guard let controller = storyboard?.instantiateViewController(withIdentifier: Constants.Identifiers.ITEM_DETAILS_VIEW_CONTROLLER) as? ItemDetailsViewController else {
             return
         }
         controller.prepareView(itemId: searchResultVM.id)
         navigationController?.pushViewController(controller, animated: true)
     }
-    
-    //TODO: De esto deberia encargarse el VM o es legal hacerlo asi?
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "showItemDetails" {
-//            let detailVC = segue.destination as! ItemDetailsViewController
-//            detailVC.selectedItemId = selectedItem
-//        }
-//    }
-    
+        
 }
 //MARK: - Table view delegate and dataSource implementations
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
@@ -103,14 +104,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 170
     }
-    
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        viewModel.cellSelected(indexPathRow: indexPath.row)
-        //TODO: De esto deberia encargarse el VM o es legal hacerlo asi?
-        /*selectedItem = tableDataSource[indexPath.row].id
-        self.performSegue(withIdentifier: "showItemDetails", sender: nil)*/
-//    }
-    
+        
     //TODO: Pedir data paginada
 //    func scrollViewDidScroll(_ scrollView: UIScrollView) {
 //
@@ -151,25 +145,21 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
 extension SearchViewController {
     
     private func showLoadingViewSubscription() {
-        //TODO: Agregar animacion o vista de carga
-        viewModel.showLoadingSubject.debug().subscribe(onNext:{ /*[weak self]*/ show in
-            //guard let self = self else { return }
-            DispatchQueue.main.async {
-                self.errorView.fadeOut()
+        viewModel.showLoadingSubject.debug().subscribe(onNext:{ [weak self] show in
+            guard let self = self else { return }
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + ((show) ? 0.0 : 1.5)) {
+                (show) ? self.loadingView.startAnimating() : self.loadingView.stopAnimating()
             }
-            if show { print("App is searching...") } else {print("Search has finished...")}
         }).disposed(by: disposeBag)
     }
 
     private func showErrorSubscription() {
-        //TODO: Agregar vista de error o modal
         viewModel.showErrorSubject.debug().subscribe(onNext:{ [weak self] error in
             guard let self = self else { return }
-            DispatchQueue.main.async {
-                self.errorView.fadeIn()
-                self.searchItemsTableView.reloadData()
+            DispatchQueue.main.asyncAfter(deadline: .now() + ((error) ? 1.5 : 0.0)) {
+                (!error) ? self.errorView.fadeOut() : self.errorView.fadeIn()
             }
-            print("An error has occured: \(error)")
         }).disposed(by: disposeBag)
     }
     
@@ -177,7 +167,6 @@ extension SearchViewController {
         viewModel.reloadTableData.debug().subscribe { [weak self] _ in
             guard let self = self else { return }
             DispatchQueue.main.async {
-                self.errorView.fadeOut()
                 self.searchItemsTableView.reloadData()
             }
         }.disposed(by: disposeBag)

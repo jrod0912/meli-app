@@ -20,7 +20,7 @@ class SearchViewModel {
     var cellSelected = PublishSubject<SearchResultViewModel>()
     var reloadTableData = PublishSubject<Bool>()
     var showLoadingSubject = PublishSubject<Bool>()
-    var showErrorSubject = PublishSubject<String>() //TODO: Cambiar String por Error
+    var showErrorSubject = PublishSubject<Bool>()
     var cancelButtonTapped = PublishSubject<Void>()
     var selectedItemId = PublishSubject<IndexPath>()
     var searchQuery = PublishSubject<String>()
@@ -40,11 +40,14 @@ class SearchViewModel {
                 //Always clear previous searchs
                 self.resetTableDataSource()
                 //Init loading animation
+                self.showErrorSubject.onNext(false)
                 self.showLoadingSubject.onNext(true)
 
                 return self.searchItemsForTerm(q: query)
                     .catch { error -> Observable<[SearchResult]> in
-                        self.showErrorSubject.onNext(error.localizedDescription)
+                        self.showLoadingSubject.onNext(false)
+                        self.showErrorSubject.onNext(true)
+                        self.reloadTableData.onNext(true)
                         return Observable.empty()
                     }
             }.subscribe(onNext: { results in
@@ -52,8 +55,10 @@ class SearchViewModel {
                 self.showLoadingSubject.onNext(false)
                 
                 if results.isEmpty {
-                    self.showErrorSubject.onNext("Some Error") //TODO: Cambiar String por Error
+                    self.showErrorSubject.onNext(true)
+                    self.reloadTableData.onNext(true)
                 } else {
+                    self.showErrorSubject.onNext(false)
                     self.prepareTableDataSource(results: results)
                     self.reloadTableData.onNext(true)
                 }
@@ -64,6 +69,7 @@ class SearchViewModel {
         cancelButtonTapped
             .asObservable()
             .subscribe(onNext: { [self] _ in
+                self.showErrorSubject.onNext(false)
                 resetTableDataSource()
                 reloadTableData.onNext(true)
             }).disposed(by: disposeBag)
@@ -158,11 +164,16 @@ struct SearchResultViewModel {
     
     private func getItemInstallments() -> String {
         guard let installments = searchResult.installments else { return ""}
-        return "en \(installments.quantity)x $ \(installments.amount)"
+        let quantity = "\(installments.quantity)"
+        let amount = NumberFormatter.currencyFormatter.string(from: installments.amount as NSNumber)!
+        return Constants.PlaceholderText.INSTALLMENTS_PLACEHOLDER
+            .replacingOccurrences(of: "{cantidad_cuotas}", with: quantity)
+            .replacingOccurrences(of: "{monto_cuotas}", with: amount)
     }
     
     private func getItemFreeShipping() -> String {
-        return (searchResult.shipping.freeShipping) ? "Envío Gratuito" : ""
+        let hasFreeShipping = searchResult.shipping.freeShipping
+        return (hasFreeShipping) ? Constants.PlaceholderText.FREE_SHIPPING_PLACEHOLDER : ""
     }
     
     private func getItemThumbnailUrl() -> String {

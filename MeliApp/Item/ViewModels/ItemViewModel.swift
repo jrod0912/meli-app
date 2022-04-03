@@ -10,67 +10,159 @@ import RxSwift
 
 class ItemViewModel {
     // TODO: Add loading and error views
-    private var provider:ItemProviderProtocol!
+    //Inputs
+    private var itemProvider:ItemProviderProtocol!
+    private var descriptionProvider:ItemDescriptionProviderProtocol!
     private var disposeBag = DisposeBag()
-    var selectedItemIdSubject = PublishSubject<String>()
-    var itemDetails = PublishSubject<ItemModel>()
-    var selectedItem:ItemModel!
+    //Outputs
+    var title: String = ""
+    var price: String = ""
+    var conditionAndSoldQty: String = ""
+    var sellerAddress: String = ""
+    var picturesUrl: [String] = []
+    var warranty: String = ""
+    var description: String = ""
+    var numberOfImages = 0
+    var numberOfAttributes = 0
     
-    init(provider: ItemProviderProtocol = ItemProvider()) {
-        self.provider = provider
+    var loadItemData = PublishSubject<Void>()
+    var loadItemDescription = PublishSubject<Void>()
+    var selectedItemIdSubject = PublishSubject<String>()
+    
+    private var currentItem:ItemModel!
+    private var attributesDataSource:[ItemAttributesViewModel] = []
+    
+    init(itemProvider: ItemProviderProtocol = ItemProvider(), descriptionProvider: ItemDescriptionProviderProtocol = ItemDescriptionProvider()) {
+        self.itemProvider = itemProvider
+        self.descriptionProvider = descriptionProvider
+        initialize()
     }
     
-    func getItemDetails(id: String){
-        provider.getItemById(itemId: id) { [weak self] result in
+    func initialize(){
+        selectedItemIdSubject
+            .debug()
+            .asObservable()
+            .subscribe(onNext: { itemId in
+                self.getItemDetails(id: itemId)
+                self.getItemDescription(itemId: itemId)
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func getItemDetails(id: String){
+        itemProvider.getItemById(itemId: id) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let model):
-                self.selectedItem = model
-                self.itemDetails.onNext(model)
-                self.itemDetails.onCompleted()
+                self.currentItem = model
+                self.prepareDataForView()
+                self.loadItemData.onNext(())
+                self.loadItemData.onCompleted()
             case .failure(let error):
                 print("ItemViewModel - getItemDetails(id:\(id)) -> Error: \(error)\n")
-                self.itemDetails.onError(error)
+                self.loadItemData.onError(error)
             }
         }
     }
     
-    func getItemTitle() -> String {
-        return selectedItem.title
+    private func getItemDescription(itemId: String){
+        descriptionProvider.getDescription(for: itemId) {  [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let model):
+                self.description = model.content
+                self.loadItemDescription.onNext(())
+                self.loadItemDescription.onCompleted()
+            case .failure(let error):
+                self.loadItemDescription.onError(error)
+                print("ItemViewModel - getItemDescription(id:\(itemId)) -> Error: \(error)\n")
+            }
+        }
     }
     
-    func getItemPrice() -> String {
-        return NumberFormatter.currencyFormatter.string(from: selectedItem.price as NSNumber)!
+    private func prepareDataForView(){
+        title = getItemTitle()
+        price = getItemPrice()
+        conditionAndSoldQty = getItemConditionAndSoldQuatity()
+        sellerAddress = getItemSellerAddress()
+        picturesUrl = getItemPicturesUrl()
+        warranty = getItemWarranty()
+        numberOfImages = picturesUrl.count
+        
+        let attributes = getItemAttributes() //filter and ignore those with null value name
+        attributesDataSource = attributes.map({ ItemAttributesViewModel(itemAttributeModel: $0) })
+        numberOfAttributes = attributesDataSource.count
     }
     
-    func getItemConditionAndSoldQuatity() -> String {
-        let condition = (selectedItem.condition == "new") ? "Nuevo" : "Usado"
-        let quantity = (selectedItem.soldQuantity > 0) ? " | \(selectedItem.soldQuantity) vendidos" : ""
+    private func getItemTitle() -> String {
+        return currentItem.title
+    }
+    
+    private func getItemPrice() -> String {
+        return NumberFormatter.currencyFormatter.string(from: currentItem.price as NSNumber)!
+    }
+    
+    private func getItemConditionAndSoldQuatity() -> String {
+        let condition = (currentItem.condition == "new") ? "Nuevo" : "Usado"
+        let quantity = (currentItem.soldQuantity > 0) ? " | \(currentItem.soldQuantity) vendidos" : ""
         return "\(condition) \(quantity)"
     }
     
-    func getItemSellerAddress() -> String {
-        return "\(selectedItem.sellerAddress.city.name), \(selectedItem.sellerAddress.state.name)"
+    private func getItemSellerAddress() -> String {
+        return "\(currentItem.sellerAddress.city.name), \(currentItem.sellerAddress.state.name)"
     }
     
-    func getItemAttributes() -> [ItemAttribute] {
-        let filteredAttributes = selectedItem.attributes.filter({$0.valueName != nil})
+    private func getItemAttributes() -> [ItemAttribute] {
+        let filteredAttributes = currentItem.attributes.filter({$0.valueName != nil})
         let sliceAttributes = Array(filteredAttributes.prefix(6))
         return sliceAttributes
     }
     
-    func getItemPicturesUrl() -> [String] {
-        return selectedItem.pictures.map { $0.secureURL }
+    private func getItemPicturesUrl() -> [String] {
+        return currentItem.pictures.map { $0.secureURL }
     }
     
-    func getItemWarranty() -> String {
-        return (selectedItem.warranty != nil) ? selectedItem.warranty! : "Sin garantía"
+    private func getItemWarranty() -> String {
+        return (currentItem.warranty != nil) ? currentItem.warranty! : "Sin garantía"
+    }
+    
+    private func prefetchImages() {
+        _ = currentItem.pictures.map { UIImageView().getImageFromURL(imageURLString: $0.secureURL) }
+    }
+    
+    func getViewModelForCell(indexPathRow: Int) -> ItemAttributesViewModel {
+        return attributesDataSource[indexPathRow]
+    }
+    
+    func getImageUrlForCell(indexPathRow: Int) -> String {
+        return currentItem.pictures[indexPathRow].secureURL
     }
     
     func openPermalinkToItem() {
-        if let permalink = URL(string: selectedItem.permalink) {
+        if let permalink = URL(string: currentItem.permalink) {
             UIApplication.shared.open(permalink)
         }
+    }
+    
+}
+
+struct ItemAttributesViewModel {
+    
+    //Input: el data model de resultados de busqueda
+    var itemAttribute:ItemAttribute!
+    //Outputs: Data procesada para alimentar la celda de la tabla
+    var attributeKey: String = ""
+    var attributeValue: String = ""
+    
+    init(itemAttributeModel: ItemAttribute) {
+        itemAttribute = itemAttributeModel
+        configureOutputForCell()
+    }
+ 
+    mutating func configureOutputForCell(){
+        attributeKey = itemAttribute.name
+        attributeValue = itemAttribute.valueName!
+        //can force unwrap because previously filtered those with valueName=nil
     }
     
 }

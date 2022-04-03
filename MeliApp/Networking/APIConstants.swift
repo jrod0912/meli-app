@@ -14,6 +14,7 @@ struct APIConstants {
     enum Endpoints: String {
         case searchItems = "sites/MCO/search"
         case getItem = "items/{itemId}"
+        case getItemDescription = "items/{itemId}/description/"
     }
     
     enum HTTPMethod: String {

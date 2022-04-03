@@ -26,7 +26,6 @@ class ItemAttributesTableViewCell: UITableViewCell {
     }
     
     func configureCell(with key: String, value: String, oddStyle: Bool){
-        print("key \(key): value \(value)")
         attributeKeyView.backgroundColor = (oddStyle) ? .systemGray4 : .systemGray6
         attributeValueView.backgroundColor = (oddStyle) ? .systemGray6 : .white
         attributeKeyLabel.text = key

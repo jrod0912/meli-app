@@ -17,23 +17,15 @@
             <objects>
                 <viewController storyboardIdentifier="ItemDetailsViewController" id="Y6W-OH-hqX" customClass="ItemDetailsViewController" customModule="MeliApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="1600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="1156"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jhc-cK-sSn">
-                                <rect key="frame" x="0.0" y="44" width="390" height="1556"/>
+                                <rect key="frame" x="0.0" y="44" width="390" height="1112"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dxx-Ll-hDI" userLabel="Container area">
-                                        <rect key="frame" x="0.0" y="0.0" width="390" height="1500"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="390" height="1050"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G0v-7I-hTX">
-                                                <rect key="frame" x="20" y="1275" width="350" height="150"/>
-                                                <color key="backgroundColor" systemColor="systemRedColor"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="150" id="DdR-Mn-v4Q"/>
-                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="150" id="UaI-QC-56H"/>
-                                                </constraints>
-                                            </view>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="xWt-lU-3vb">
                                                 <rect key="frame" x="0.0" y="51" width="390" height="240"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -203,7 +195,6 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
                                             <constraint firstItem="mR9-Yp-rBr" firstAttribute="leading" secondItem="dxx-Ll-hDI" secondAttribute="leading" id="3Vh-Zt-JZb"/>
                                             <constraint firstAttribute="trailing" secondItem="o6D-zg-N8v" secondAttribute="trailing" constant="20" id="4fG-1E-gyC"/>
                                             <constraint firstAttribute="trailing" secondItem="xWt-lU-3vb" secondAttribute="trailing" id="6JQ-5U-tZS"/>
-                                            <constraint firstItem="G0v-7I-hTX" firstAttribute="leading" secondItem="dxx-Ll-hDI" secondAttribute="leading" constant="20" id="8Ve-lM-Jl5"/>
                                             <constraint firstItem="miT-h9-FAy" firstAttribute="top" secondItem="n2a-VK-gEf" secondAttribute="bottom" constant="20" id="AxA-xf-ZAe"/>
                                             <constraint firstAttribute="trailing" secondItem="HnC-Gt-62O" secondAttribute="trailing" constant="20" id="Bp4-ge-7Fq"/>
                                             <constraint firstItem="Mne-dP-IbC" firstAttribute="top" secondItem="l4l-HG-K0f" secondAttribute="bottom" constant="8" id="EmV-OI-Yck"/>
@@ -219,13 +210,13 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
                                             <constraint firstItem="n2a-VK-gEf" firstAttribute="leading" secondItem="dxx-Ll-hDI" secondAttribute="leading" id="Ruq-ed-h4w"/>
                                             <constraint firstItem="BzH-JN-WPX" firstAttribute="leading" secondItem="dxx-Ll-hDI" secondAttribute="leading" constant="20" id="Sv3-Ze-xU2"/>
                                             <constraint firstItem="o6D-zg-N8v" firstAttribute="top" secondItem="miT-h9-FAy" secondAttribute="bottom" constant="8" id="TY4-35-XAs"/>
+                                            <constraint firstAttribute="bottom" secondItem="PRF-ID-tw1" secondAttribute="bottom" constant="87" id="U6Q-Rt-shU"/>
                                             <constraint firstAttribute="trailing" secondItem="miT-h9-FAy" secondAttribute="trailing" constant="20" id="XRv-hg-Lz7"/>
                                             <constraint firstItem="g3V-Fm-vIO" firstAttribute="top" secondItem="dxx-Ll-hDI" secondAttribute="top" constant="20" id="YNy-Hf-fgV"/>
                                             <constraint firstAttribute="trailing" secondItem="PRF-ID-tw1" secondAttribute="trailing" constant="12" id="bXz-6A-zVM"/>
                                             <constraint firstItem="BzH-JN-WPX" firstAttribute="top" secondItem="Mne-dP-IbC" secondAttribute="bottom" constant="8" id="bcj-BV-BkG"/>
-                                            <constraint firstAttribute="trailing" secondItem="G0v-7I-hTX" secondAttribute="trailing" constant="20" id="fcz-ih-m7y"/>
                                             <constraint firstAttribute="trailing" secondItem="mR9-Yp-rBr" secondAttribute="trailing" id="ffS-g1-GkF"/>
-                                            <constraint firstAttribute="height" priority="250" constant="1500" id="hYd-YP-Ze2"/>
+                                            <constraint firstAttribute="height" priority="250" constant="1050" id="hYd-YP-Ze2"/>
                                             <constraint firstItem="PRF-ID-tw1" firstAttribute="top" secondItem="7zZ-DY-5pg" secondAttribute="bottom" constant="8" id="hhQ-VT-il8"/>
                                             <constraint firstItem="miT-h9-FAy" firstAttribute="leading" secondItem="dxx-Ll-hDI" secondAttribute="leading" constant="20" id="iim-5I-dzb"/>
                                             <constraint firstItem="Jjs-Yt-gWU" firstAttribute="leading" secondItem="dxx-Ll-hDI" secondAttribute="leading" id="j86-ux-ey9"/>
@@ -235,7 +226,6 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
                                             <constraint firstAttribute="trailing" secondItem="Mne-dP-IbC" secondAttribute="trailing" constant="20" id="nM7-NH-Umb"/>
                                             <constraint firstItem="l4l-HG-K0f" firstAttribute="leading" secondItem="dxx-Ll-hDI" secondAttribute="leading" constant="20" id="q59-aS-0Vw"/>
                                             <constraint firstItem="7zZ-DY-5pg" firstAttribute="leading" secondItem="dxx-Ll-hDI" secondAttribute="leading" constant="20" id="qtF-oe-ZRf"/>
-                                            <constraint firstAttribute="bottom" secondItem="G0v-7I-hTX" secondAttribute="bottom" constant="75" id="sbP-YY-DAG"/>
                                             <constraint firstAttribute="trailing" secondItem="BzH-JN-WPX" secondAttribute="trailing" constant="20" id="shs-jZ-L7Y"/>
                                             <constraint firstItem="Xwb-FN-994" firstAttribute="leading" secondItem="dxx-Ll-hDI" secondAttribute="leading" constant="20" id="tLC-PO-NPg"/>
                                             <constraint firstItem="PRF-ID-tw1" firstAttribute="leading" secondItem="dxx-Ll-hDI" secondAttribute="leading" constant="12" id="u6P-sH-mhj"/>
@@ -253,7 +243,7 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
                                 </constraints>
                             </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kV9-Eq-Ekl" userLabel="Footer">
-                                <rect key="frame" x="0.0" y="1500" width="390" height="100"/>
+                                <rect key="frame" x="0.0" y="1056" width="390" height="100"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gOC-JA-bC8" userLabel="Separator">
                                         <rect key="frame" x="0.0" y="1" width="390" height="1"/>
@@ -268,8 +258,11 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
                                         <color key="textColor" name="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Nuevo | 2500 vendidos" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mJC-RE-8Jo">
-                                        <rect key="frame" x="20" y="8" width="189" height="15"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nuevo | 2500 vendidos" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mJC-RE-8Jo">
+                                        <rect key="frame" x="20" y="8" width="189" height="14.333333333333336"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="189" id="Cvf-PQ-QvT"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                         <color key="textColor" name="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -320,11 +313,12 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </barButtonItem>
                     </navigationItem>
-                    <size key="freeformSize" width="390" height="1600"/>
+                    <size key="freeformSize" width="390" height="1156"/>
                     <connections>
                         <outlet property="conditionAndSoldQuantity" destination="mJC-RE-8Jo" id="4w5-2F-JNA"/>
                         <outlet property="imageCarousel" destination="xWt-lU-3vb" id="mMb-3j-fb1"/>
                         <outlet property="itemAttributesTable" destination="PRF-ID-tw1" id="DWf-pA-pp5"/>
+                        <outlet property="itemDescription" destination="HnC-Gt-62O" id="yqS-hv-FHM"/>
                         <outlet property="itemPrice" destination="Xdn-WY-Bgg" id="DVz-v1-eFJ"/>
                         <outlet property="itemTitle" destination="g3V-Fm-vIO" id="uK2-1U-uQw"/>
                         <outlet property="itemWarranty" destination="BzH-JN-WPX" id="DqK-KK-DOL"/>
@@ -344,9 +338,6 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

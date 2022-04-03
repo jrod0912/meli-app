@@ -22,45 +22,28 @@ class ItemDetailsViewController: UIViewController {
     
     private var disposeBag = DisposeBag()
     private var viewModel = ItemViewModel()
-    //private var selectedItemId:String!
+    private var loadingView = UIActivityIndicatorView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //TODO: Suscriptions (faltan like, comprar = llevar a la web)
-        selectedItemIdSubscription()
-        loadItemDataSubscription()
-        loadItemDescriptionSubscription()
+        //TODO: Suscriptions (falta like)
+        setupLoadingView()
         registerTableViewCell()
         //TODO: Data binding (no creo que haga falta)
     }
     
     func prepareView(itemId: String) {
-        //selectedItemId = itemId
+        setupSubscriptions()
         viewModel.selectedItemIdSubject.onNext(itemId)
     }
     
-    private func selectedItemIdSubscription(){
-        
-    }
-    
-    private func loadItemDataSubscription(){
-        viewModel.loadItemData.debug().subscribe { [weak self] _ in
-            guard let self = self else { return }
-            DispatchQueue.main.async {
-                self.loadUIData()
-                self.itemAttributesTable.reloadData()
-                self.imageCarousel.reloadSections(IndexSet(integer: 0)) //.reloadData() flickering
-            }
-        }.disposed(by: disposeBag)
-    }
-    
-    private func loadItemDescriptionSubscription(){
-        viewModel.loadItemDescription.debug().subscribe { [weak self] _ in
-            guard let self = self else { return }
-            DispatchQueue.main.async {
-                self.itemDescription.text = self.viewModel.description
-            }
-        }.disposed(by: disposeBag)
+    func setupLoadingView() {
+        loadingView = UIActivityIndicatorView(frame: self.view.frame)
+        loadingView.style = .large
+        loadingView.color = .systemBlue
+        loadingView.center = self.view.center
+        loadingView.backgroundColor = .white
+        self.view.addSubview(loadingView)
     }
     
     private func loadUIData(){
@@ -69,7 +52,6 @@ class ItemDetailsViewController: UIViewController {
         itemWarranty.text = viewModel.warranty
         conditionAndSoldQuantity.text = viewModel.conditionAndSoldQty
         sellerAddress.text = viewModel.sellerAddress
-        
     }
     
     private func registerTableViewCell(){
@@ -113,4 +95,45 @@ extension ItemDetailsViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     
+}
+
+//MARK: Reactive stuff
+
+extension ItemDetailsViewController {
+    
+    private func setupSubscriptions(){
+        showLoadingViewSubscription()
+        loadItemDataSubscription()
+        loadItemDescriptionSubscription()
+    }
+    
+    private func loadItemDataSubscription(){
+        viewModel.loadItemData.subscribe { [weak self] _ in
+            guard let self = self else { return }
+            DispatchQueue.main.async {
+                self.loadUIData()
+                self.itemAttributesTable.reloadData()
+                self.imageCarousel.reloadSections(IndexSet(integer: 0))
+            }
+        }.disposed(by: disposeBag)
+    }
+    
+    private func loadItemDescriptionSubscription(){
+        viewModel.loadItemDescription.subscribe { [weak self] _ in
+            guard let self = self else { return }
+            DispatchQueue.main.async {
+                self.itemDescription.text = self.viewModel.description
+            }
+        }.disposed(by: disposeBag)
+    }
+    
+    private func showLoadingViewSubscription() {
+        viewModel.showLoadingSubject.debug().subscribe(onNext:{ [weak self] show in
+            guard let self = self else { return }
+            DispatchQueue.main.asyncAfter(deadline: .now() + ((show) ? 0.0 : 1.5)) {
+                (show) ? self.loadingView.startAnimating() : self.loadingView.stopAnimating()
+            }
+        }).disposed(by: disposeBag)
+    }
+
 }

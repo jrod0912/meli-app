@@ -28,6 +28,7 @@ class ItemViewModel {
     var loadItemData = PublishSubject<Void>()
     var loadItemDescription = PublishSubject<Void>()
     var selectedItemIdSubject = PublishSubject<String>()
+    var showLoadingSubject = PublishSubject<Bool>()
     
     private var currentItem:ItemModel!
     private var attributesDataSource:[ItemAttributesViewModel] = []
@@ -39,9 +40,13 @@ class ItemViewModel {
     }
     
     func initialize(){
+        
         selectedItemIdSubject
             .debug()
             .asObservable()
+            .do(onNext: { _ in
+                self.showLoadingSubject.onNext(true)
+            })
             .subscribe(onNext: { itemId in
                 self.getItemDetails(id: itemId)
                 self.getItemDescription(itemId: itemId)
@@ -58,6 +63,7 @@ class ItemViewModel {
                 self.prepareDataForView()
                 self.loadItemData.onNext(())
                 self.loadItemData.onCompleted()
+                self.showLoadingSubject.onNext(false)
             case .failure(let error):
                 print("ItemViewModel - getItemDetails(id:\(id)) -> Error: \(error)\n")
                 self.loadItemData.onError(error)

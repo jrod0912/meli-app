@@ -9,6 +9,7 @@ import Foundation
 
 protocol SearchProviderProtocol {
     func getSearchResultsFor(query: String, completion: @escaping (Result<SearchModel, Error>) -> ())
+    func getSearchResultsFor(query: String, with offset: Int, completion: @escaping (Result<SearchModel, Error>) -> ())
 }
 
 struct SearchProvider: SearchProviderProtocol {
@@ -26,6 +27,19 @@ struct SearchProvider: SearchProviderProtocol {
             if let model = results {
                 completion(.success(model))
             }            
+        }
+    }
+    
+    func getSearchResultsFor(query: String, with offset: Int, completion: @escaping (Result<SearchModel, Error>) -> ()) {
+        let parameters:[String:Any] = ["q":query, "offset": offset]
+        manager.performAPIRequest(with: parameters) { (results, error) in
+            guard error == nil, let _ = results else {
+                return completion(.failure(CustomError.search(type: .notFound)))
+            }
+            
+            if let model = results {
+                completion(.success(model))
+            }
         }
     }
 }
@@ -54,5 +68,9 @@ struct MockSearchProvider: SearchProviderProtocol, MockProviderProtocol {
                 }
             }
         })
+    }
+    
+    func getSearchResultsFor(query: String, with offset: Int, completion: @escaping (Result<SearchModel, Error>) -> ()) {
+        //TODO: Implementacion
     }
 }

@@ -18,10 +18,11 @@ class SearchViewController: UIViewController {
     private var viewModel = SearchViewModel()
     private var errorView = ErrorView()
     private var loadingView = UIActivityIndicatorView()
+    var isPaginating = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
         setNavigationBarImageView()
         setupLoadingView()
         setupSubscriptions()
@@ -105,38 +106,29 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         return 170
     }
         
-    //TODO: Pedir data paginada
-//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//
-//        let scrollPosition = scrollView.contentOffset.y
-//        let scrollViewHeight = scrollView.frame.size.height
-//        let tableOffset = searchItemsTableView.contentSize.height
-//        let totalOffset = (tableOffset - 100 - scrollViewHeight)
-//        let paginationFactor = (scrollPosition - totalOffset)
-//
-//        if paginationFactor > 160 {
-//            if !isPaginating {
-//                self.searchItemsTableView.tableFooterView = createAndDisplayLoadingView()
-//                isPaginating = true
-//
-//                //Only add rows if there are less than 50
-//                if count < 15 {
-//                    count+=3
-//                    DispatchQueue.main.asyncAfter(deadline: .now() + 3) { [self] in
-//                        print("count \(self.count)")
-//                        self.searchItemsTableView.tableFooterView = nil
-//                        self.searchItemsTableView.reloadData()
-//                        isPaginating = false
-//                    }
-//                } else {
-//                    DispatchQueue.main.async {
-//                        self.searchItemsTableView.tableFooterView = nil
-//                        self.isPaginating = false
-//                    }
-//                }
-//            }
-//        }
-//    }
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        let fetchMoreData = shouldFetchMoreData() //checks if we reach the end of the table view content
+        
+        if fetchMoreData && (viewModel.numberOfRows > 0) {
+            if !isPaginating {
+                //Only request more rows if there are results available
+                if viewModel.hasMoreSearchResults {
+                    isPaginating = true
+                    searchItemsTableView.tableFooterView = createAndDisplayLoadingView()
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [self] in
+                        searchItemsTableView.tableFooterView = nil
+                        viewModel.canFetchMoreData.onNext(())
+                        isPaginating = false
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        self.isPaginating = false
+                    }
+                }
+            }
+        }
+    }
     
 }
 
@@ -147,7 +139,6 @@ extension SearchViewController {
     private func showLoadingViewSubscription() {
         viewModel.showLoadingSubject.subscribe(onNext:{ [weak self] show in
             guard let self = self else { return }
-            
             DispatchQueue.main.asyncAfter(deadline: .now() + ((show) ? 0.0 : 1.5)) {
                 (show) ? self.loadingView.startAnimating() : self.loadingView.stopAnimating()
             }
@@ -167,7 +158,6 @@ extension SearchViewController {
         viewModel.reloadTableData.subscribe { [weak self] _ in
             guard let self = self else { return }
             DispatchQueue.main.async {
-                self.searchItemsTableView.setContentOffset(CGPoint.zero, animated: true) //reset scroll
                 self.searchItemsTableView.reloadData()
             }
         }.disposed(by: disposeBag)
@@ -200,5 +190,14 @@ extension SearchViewController {
             .itemSelected
             .bind(to: viewModel.selectedItemId)
             .disposed(by: disposeBag)
+    }
+    
+    func shouldFetchMoreData() -> Bool {
+        let scrollPosition = self.searchItemsTableView.contentOffset.y
+        let tableViewHeight = self.searchItemsTableView.frame.size.height
+        let contentHeight = self.searchItemsTableView.contentSize.height
+        let totalOffset = (contentHeight - tableViewHeight)
+        let shouldFetch = ((scrollPosition - 100) > totalOffset) && (scrollPosition > 0)
+        return shouldFetch
     }
 }

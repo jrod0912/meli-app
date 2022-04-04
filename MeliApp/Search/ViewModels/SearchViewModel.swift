@@ -13,8 +13,12 @@ class SearchViewModel {
     private var provider:SearchProviderProtocol!
     //Sub-viewmodel source
     private var tableDataSource:[SearchResultViewModel] = []
+    //Pagination
+    private var currentSearchOffset = 0
+    private var currentSearchQuery = ""
     //Outputs:
     var numberOfRows:Int = 0
+    var hasMoreSearchResults = false
     //Observers inputs
     var searchResults = PublishSubject<[SearchResult]>()
     var cellSelected = PublishSubject<SearchResultViewModel>()
@@ -24,6 +28,7 @@ class SearchViewModel {
     var cancelButtonTapped = PublishSubject<Void>()
     var selectedItemId = PublishSubject<IndexPath>()
     var searchQuery = PublishSubject<String>()
+    var canFetchMoreData = PublishSubject<Void>()
     private var disposeBag = DisposeBag()
     
         
@@ -37,13 +42,14 @@ class SearchViewModel {
             .asObservable()
             .observe(on: MainScheduler.instance)
             .flatMapLatest { query -> Observable<[SearchResult]> in
-                //Always clear previous searchs
+                self.currentSearchQuery = query
+                //Always clear previous searchs if there's a new search term
                 self.resetTableDataSource()
                 //Init loading animation
                 self.showErrorSubject.onNext(false)
                 self.showLoadingSubject.onNext(true)
-
-                return self.searchItemsForTerm(q: query)
+                
+                return self.searchItemsForTerm()
                     .catch { error -> Observable<[SearchResult]> in
                         self.showLoadingSubject.onNext(false)
                         self.showErrorSubject.onNext(true)
@@ -66,11 +72,10 @@ class SearchViewModel {
             })
             .disposed(by: disposeBag)
         
-        
         cancelButtonTapped
             .asObservable()
             .subscribe(onNext: { [self] _ in
-                self.showErrorSubject.onNext(false)
+                showErrorSubject.onNext(false)
                 resetTableDataSource()
                 reloadTableData.onNext(true)
             }).disposed(by: disposeBag)
@@ -83,21 +88,48 @@ class SearchViewModel {
             .subscribe(onNext: { [self] selected in
                 cellSelected.onNext(selected)
             }).disposed(by: disposeBag)
+        
+        canFetchMoreData
+            .asObservable()
+            .observe(on: MainScheduler.instance)
+            .flatMapLatest { _ -> Observable<[SearchResult]> in
+                return self.searchItemsForTerm()
+                    .catch { error -> Observable<[SearchResult]> in
+                        print("error \(error)")
+                        return Observable.empty()
+                    }
+            }.subscribe(onNext: { results in
+                self.prefetchImages()
+                self.prepareTableDataSource(results: results)
+                self.reloadTableData.onNext(true)
+            })
+            .disposed(by: disposeBag)
+        
+    }
+    
+    func updateCurrentOffset(paging: SearchPaging){
+        let nextOffset = currentSearchOffset + 50
+        hasMoreSearchResults = (paging.total > nextOffset)
+        if hasMoreSearchResults {
+            currentSearchOffset = nextOffset
+        }
     }
     
     func prepareTableDataSource(results: [SearchResult]) {
-        numberOfRows = results.count
-        tableDataSource = results.map({ SearchResultViewModel(searchResultModel: $0) })
+        numberOfRows = numberOfRows + results.count
+        let preparedData = results.map({ SearchResultViewModel(searchResultModel: $0) })
+        tableDataSource.append(contentsOf: preparedData)
     }
     
-    func searchItemsForTerm(q: String) -> Observable<[SearchResult]> {
+    func searchItemsForTerm() -> Observable<[SearchResult]> {
         return Observable.create({ [self] (observer) -> Disposable in
-            provider.getSearchResultsFor(query: q) { result in
+            provider.getSearchResultsFor(query: currentSearchQuery, with: currentSearchOffset) { result in
                 switch result {
                     case .success(let searchModel):
                         if searchModel.results.isEmpty {
                             observer.onError(CustomError.search(type: .notFound))
                         }else{
+                            self.updateCurrentOffset(paging: searchModel.paging)
                             observer.onNext(searchModel.results)
                             observer.onCompleted()
                         }
@@ -113,7 +145,6 @@ class SearchViewModel {
         return tableDataSource[indexPathRow]
     }
     
-    //TODO: Revisar si debería pasar todo el viemodel a pesar de que no es compatible con la vista de detalle y en aquella vista para generar el viewmodel solo necesito el id (String)
     func cellSelected(indexPathRow: Int) -> SearchResultViewModel {
         return tableDataSource[indexPathRow]
     }
@@ -121,10 +152,13 @@ class SearchViewModel {
     private func resetTableDataSource() {
         numberOfRows = 0
         tableDataSource = []
+        currentSearchOffset = 0
     }
     
     private func prefetchImages() {
-        _ = tableDataSource.map { UIImageView().getImageFromURL(imageURLString: $0.thumbnailUrl) }
+        DispatchQueue.main.async { [self] in
+            _ = tableDataSource.map { UIImageView().getImageFromURL(imageURLString: $0.thumbnailUrl) }
+        }
     }
 }
 

@@ -9,11 +9,12 @@ import Foundation
 
 struct SearchModel: Codable, Equatable {
     static func == (lhs: SearchModel, rhs: SearchModel) -> Bool {
-        return lhs.query == rhs.query && lhs.results == rhs.results
+        return lhs.query == rhs.query && lhs.results == rhs.results && lhs.paging == rhs.paging
     }
     
     let query: String
     let results: [SearchResult]
+    let paging: SearchPaging
 }
 
 struct SearchResult: Codable, Equatable {
@@ -47,4 +48,10 @@ struct SearchResultShipping: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case freeShipping = "free_shipping"
     }
+}
+
+struct SearchPaging: Codable, Equatable {
+    let total: Int
+    let offset: Int
+    let limit: Int
 }

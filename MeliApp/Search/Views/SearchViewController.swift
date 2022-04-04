@@ -84,7 +84,7 @@ class SearchViewController: UIViewController {
         guard let controller = storyboard?.instantiateViewController(withIdentifier: Constants.Identifiers.ITEM_DETAILS_VIEW_CONTROLLER) as? ItemDetailsViewController else {
             return
         }
-        controller.prepareView(itemVM: searchResultVM)
+        controller.prepareView(itemId: searchResultVM.id)
         navigationController?.pushViewController(controller, animated: true)
     }
         

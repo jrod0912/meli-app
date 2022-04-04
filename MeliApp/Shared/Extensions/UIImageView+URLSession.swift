@@ -30,7 +30,7 @@ extension UIImageView {
         //Perform image download
         URLSession.shared.dataTask(with: url) { data, response, error in
             if error != nil {
-                print("Download Error: \(error.debugDescription)")
+                Log.event(type: .error, "Failed to download image, reason: \(error.debugDescription)")
                 return
             }
             

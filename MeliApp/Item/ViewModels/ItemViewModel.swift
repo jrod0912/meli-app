@@ -75,6 +75,8 @@ class ItemViewModel {
                 self.loadItemData.onCompleted()
                 self.showLoadingSubject.onNext(false)
             case .failure(let error):
+                Log.event(type: .error, "Failed to get details from item with id: \(id)")
+                self.showLoadingSubject.onNext(false)
                 self.loadItemData.onError(error)
             }
         }
@@ -89,6 +91,8 @@ class ItemViewModel {
                 self.loadItemDescription.onNext(())
                 self.loadItemDescription.onCompleted()
             case .failure(let error):
+                Log.event(type: .error, "Failed to get description from item with id: \(itemId)")
+                self.showLoadingSubject.onNext(false)
                 self.loadItemDescription.onError(error)
             }
         }
@@ -114,11 +118,13 @@ class ItemViewModel {
         Observable.create { [self] observer -> Disposable in
                        
             if Constants.userDefaults.bool(forKey:currentItem.id) {
+                Log.event(type: .info, "User unliked item with id: \(currentItem.id)")
                 Constants.userDefaults.removeObject(forKey: currentItem.id)
                 Constants.userDefaults.synchronize()
                 observer.onNext(false)
                 observer.onCompleted()
             }else{
+                Log.event(type: .info, "User liked item with id: \(currentItem.id)")
                 Constants.userDefaults.set(true, forKey: currentItem.id)
                 Constants.userDefaults.synchronize()
                 observer.onNext(true)
@@ -174,6 +180,7 @@ class ItemViewModel {
     }
     
     func openPermalinkToItem() {
+        Log.event(type: .info, "User hit buy button! Redirecting to ML website with permalink: \(currentItem.permalink)")
         if let permalink = URL(string: currentItem.permalink) {
             UIApplication.shared.open(permalink)
         }

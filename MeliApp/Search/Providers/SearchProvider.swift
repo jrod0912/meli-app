@@ -71,6 +71,24 @@ struct MockSearchProvider: SearchProviderProtocol, MockProviderProtocol {
     }
     
     func getSearchResultsFor(query: String, with offset: Int, completion: @escaping (Result<SearchModel, Error>) -> ()) {
-        //TODO: Implementacion
+        let fileName = jsonFileName
+        MockSearchProvider.loadJsonDataFromFile(fileName, completion: { data in
+            if let json = data {
+                do {
+                    let decodedJson = try JSONDecoder().decode(SearchModel.self, from: json)
+                    completion(.success(decodedJson))
+                } catch DecodingError.keyNotFound(let key, let context) {
+                    completion(.failure(DecodingError.keyNotFound(key,context)))
+                } catch DecodingError.typeMismatch(let type, let context) {
+                    completion(.failure(DecodingError.typeMismatch(type, context)))
+                } catch DecodingError.valueNotFound(let type, let context) {
+                    completion(.failure(DecodingError.valueNotFound(type, context)))
+                }  catch DecodingError.dataCorrupted(let context) {
+                    completion(.failure(DecodingError.dataCorrupted(context)))
+                } catch {
+                    completion(.failure(CustomError.decodingUnknown(source: fileName)))
+                }
+            }
+        })
     }
 }

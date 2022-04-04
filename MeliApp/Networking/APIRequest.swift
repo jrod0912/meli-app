@@ -15,7 +15,7 @@ protocol APIRequestProtocol {
 extension APIRequestProtocol {
     
     func setBodyParameters(parameters: [String:Any], urlRequest: inout URLRequest) {
-        guard !parameters.isEmpty else { print("No body parameters were sent")
+        guard !parameters.isEmpty else { Log.event(type: .error, "No body parameters were sent")
             return
         }
         

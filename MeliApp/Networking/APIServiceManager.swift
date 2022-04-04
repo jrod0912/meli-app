@@ -22,8 +22,10 @@ class APIServiceManager <T:APIService> {
     
     func performAPIRequest(with requestParameters: T.APIRequestParametersType, completionHandler: @escaping (T.APIRequestResponseDataType?, Error?) -> ()) {
         if let urlRequest = service.createRequest(with: requestParameters) {
+            Log.event(type: .api, "Initialize API request with method: \(urlRequest.httpMethod ?? "GET") to endpoint: \(urlRequest.url!.absoluteString)")
             urlSession.dataTask(with: urlRequest) { (data, response, error) in
                 guard let data = data, let httpResponse = response as? HTTPURLResponse else {
+                    Log.event(type: .error, "Failed to obtain a valid httpResponse or data")
                     return completionHandler(nil, error)
                 }
                 do {

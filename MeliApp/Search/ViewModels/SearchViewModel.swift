@@ -42,6 +42,7 @@ class SearchViewModel {
             .asObservable()
             .observe(on: MainScheduler.instance)
             .flatMapLatest { query -> Observable<[SearchResult]> in
+                Log.event(type: .info, "User started search for: \(query)")
                 self.currentSearchQuery = query
                 //Always clear previous searchs if there's a new search term
                 self.resetTableDataSource()
@@ -93,9 +94,10 @@ class SearchViewModel {
             .asObservable()
             .observe(on: MainScheduler.instance)
             .flatMapLatest { _ -> Observable<[SearchResult]> in
+                Log.event(type: .info, "User reached end of table search results, fetch next \(self.currentSearchOffset) results")
                 return self.searchItemsForTerm()
                     .catch { error -> Observable<[SearchResult]> in
-                        print("error \(error)")
+                        Log.event(type: .error, "Failed to fetch next \(self.currentSearchOffset) results")
                         return Observable.empty()
                     }
             }.subscribe(onNext: { results in
@@ -127,6 +129,7 @@ class SearchViewModel {
                 switch result {
                     case .success(let searchModel):
                         if searchModel.results.isEmpty {
+                            Log.event(type: .error, "Search didn't return any results!")
                             observer.onError(CustomError.search(type: .notFound))
                         }else{
                             self.updateCurrentOffset(paging: searchModel.paging)
@@ -146,10 +149,12 @@ class SearchViewModel {
     }
     
     func cellSelected(indexPathRow: Int) -> SearchResultViewModel {
+        Log.event(type: .info, "User selected item: \(tableDataSource[indexPathRow])")
         return tableDataSource[indexPathRow]
     }
     
     private func resetTableDataSource() {
+        Log.event(type: .info, "User tap cancel button, clear search data")
         numberOfRows = 0
         tableDataSource = []
         currentSearchOffset = 0

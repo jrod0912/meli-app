@@ -44,6 +44,7 @@
 		95A164C227EFD81E0099B438 /* MeliAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A164C127EFD81E0099B438 /* MeliAppUITests.swift */; };
 		95A164C427EFD8250099B438 /* MeliAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A164C327EFD8250099B438 /* MeliAppUITestsLaunchTests.swift */; };
 		95B8797E27FAD8EF0007BE95 /* SearchResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B8797D27FAD8EF0007BE95 /* SearchResultViewModel.swift */; };
+		95B8798127FB44C70007BE95 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B8798027FB44C70007BE95 /* Logger.swift */; };
 		95C3DA3027F14281002FCB3D /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C3DA2F27F14281002FCB3D /* SearchViewController.swift */; };
 		95C3DA3227F142B5002FCB3D /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95C3DA3127F142B5002FCB3D /* Search.storyboard */; };
 		95C3DA3627F1430A002FCB3D /* SearchItemViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C3DA3427F1430A002FCB3D /* SearchItemViewCell.swift */; };
@@ -123,6 +124,7 @@
 		95A164C127EFD81E0099B438 /* MeliAppUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeliAppUITests.swift; sourceTree = "<group>"; };
 		95A164C327EFD8250099B438 /* MeliAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeliAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		95B8797D27FAD8EF0007BE95 /* SearchResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewModel.swift; sourceTree = "<group>"; };
+		95B8798027FB44C70007BE95 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		95C3DA2F27F14281002FCB3D /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		95C3DA3127F142B5002FCB3D /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
 		95C3DA3427F1430A002FCB3D /* SearchItemViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchItemViewCell.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 		954B3F8F27F0FEAC0085639F /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				95B8797F27FB44B20007BE95 /* Debug */,
 				954B3FAC27F119740085639F /* Extensions */,
 				954B3F9127F0FED60085639F /* MockProviderProtocol.swift */,
 				95E1924027F2597400D42B72 /* Constants.swift */,
@@ -414,6 +417,14 @@
 				95A164BD27EFBE150099B438 /* searchWithResults.json */,
 			);
 			path = Mocks;
+			sourceTree = "<group>";
+		};
+		95B8797F27FB44B20007BE95 /* Debug */ = {
+			isa = PBXGroup;
+			children = (
+				95B8798027FB44C70007BE95 /* Logger.swift */,
+			);
+			path = Debug;
 			sourceTree = "<group>";
 		};
 		95C3DA3327F142BC002FCB3D /* Cells */ = {
@@ -729,6 +740,7 @@
 				954B3FA527F1025A0085639F /* ItemModel.swift in Sources */,
 				95D28C4B27F4C7DA00ED69BF /* Errors.swift in Sources */,
 				95A164B327EFA0680099B438 /* SearchModel.swift in Sources */,
+				95B8798127FB44C70007BE95 /* Logger.swift in Sources */,
 				954B3FAE27F119E80085639F /* UIImageView+URLSession.swift in Sources */,
 				9587CBA527F523A800EC824F /* ItemAttributesTableViewCell.swift in Sources */,
 				95FDF91327F3A16A00691176 /* NumberFormatter+String.swift in Sources */,

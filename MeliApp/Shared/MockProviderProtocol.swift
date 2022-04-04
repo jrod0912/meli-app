@@ -18,7 +18,7 @@ extension MockProviderProtocol{
                 let data = try Data(contentsOf: fileUrl, options: [])
                 completion(data as Data)
             } catch (let error) {
-                print(error.localizedDescription)
+                Log.event(type: .error, "Failed to load data from json file, reason: \(error.localizedDescription)")
                 completion(nil)
             }
         }

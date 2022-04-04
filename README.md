@@ -25,6 +25,8 @@ Para el desarrollo de este ejercicio escogí el patrón de arquitectura **MVVM (
 
 ## Librerias de 3ros
 
+**Nota**: Se han subido al repo el directorio de Pods así como el Podfile.lock únicamente para evitar que la(s) persona(s) que vayan a evaluar el challenge tengan ejecutar el **pod install**.
+
 | **Pod** | **Version** | **Descripción** |
 |:---:|:---:|:---:|
 | **RxSwift** |![Badge w/ Version](https://img.shields.io/cocoapods/v/RxSwift)| [something] |

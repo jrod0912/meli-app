@@ -15,7 +15,7 @@ class ErrorView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.alpha = 0.0 // Estado inicial no visible
+        self.alpha = 0.0 // Initial state not visible
         commonInit()
     }
     

@@ -27,11 +27,9 @@ class ItemDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //TODO: Suscriptions (falta like)
         setupLoadingView()
         registerTableViewCell()
         bindData()
-        self.likeButton.image =  Constants.Images.unlikeImage
     }
     
     func prepareView(itemId: String) {

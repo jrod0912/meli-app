@@ -90,7 +90,6 @@ class ItemViewModel {
                 self.loadItemDescription.onCompleted()
             case .failure(let error):
                 self.loadItemDescription.onError(error)
-                print("ItemViewModel - getItemDescription(id:\(itemId)) -> Error: \(error)\n")
             }
         }
     }
@@ -117,11 +116,9 @@ class ItemViewModel {
             if Constants.userDefaults.bool(forKey:currentItem.id) {
                 Constants.userDefaults.removeObject(forKey: currentItem.id)
                 Constants.userDefaults.synchronize()
-                print("unlike an item \(currentItem.id)")
                 observer.onNext(false)
                 observer.onCompleted()
             }else{
-                print("like an item \(currentItem.id)")
                 Constants.userDefaults.set(true, forKey: currentItem.id)
                 Constants.userDefaults.synchronize()
                 observer.onNext(true)

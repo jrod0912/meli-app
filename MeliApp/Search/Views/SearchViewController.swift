@@ -204,11 +204,3 @@ extension SearchViewController {
         return shouldFetch
     }
 }
-
-extension SearchViewController: UITabBarDelegate {
-    
-    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        
-    }
-    
-}

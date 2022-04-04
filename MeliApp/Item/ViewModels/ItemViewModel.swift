@@ -23,11 +23,14 @@ class ItemViewModel {
     var description: String = ""
     var numberOfImages = 0
     var numberOfAttributes = 0
+    var isLiked = false
     
     var loadItemData = PublishSubject<Void>()
     var loadItemDescription = PublishSubject<Void>()
     var selectedItemIdSubject = PublishSubject<String>()
     var showLoadingSubject = PublishSubject<Bool>()
+    var likeItemSubject = PublishSubject<Void>()
+    var showLikedSubject = PublishSubject<Bool>()
     
     private var currentItem:ItemModel!
     private var attributesDataSource:[ItemAttributesViewModel] = []
@@ -50,6 +53,15 @@ class ItemViewModel {
                 self.getItemDescription(itemId: itemId)
             })
             .disposed(by: disposeBag)
+                
+            likeItemSubject
+                .asObservable()
+                .flatMapLatest({ _ -> Observable<Bool> in
+                    return self.toggleLikeStateForItem()
+                })
+                .subscribe(onNext:{ liked in
+                    self.showLikedSubject.onNext(liked)
+                }).disposed(by: disposeBag)
     }
     
     private func getItemDetails(id: String){
@@ -63,7 +75,6 @@ class ItemViewModel {
                 self.loadItemData.onCompleted()
                 self.showLoadingSubject.onNext(false)
             case .failure(let error):
-                print("ItemViewModel - getItemDetails(id:\(id)) -> Error: \(error)\n")
                 self.loadItemData.onError(error)
             }
         }
@@ -96,6 +107,29 @@ class ItemViewModel {
         let attributes = getItemAttributes() //filter and ignore those with null value name
         attributesDataSource = attributes.map({ ItemAttributesViewModel(itemAttributeModel: $0) })
         numberOfAttributes = attributesDataSource.count
+        
+        self.showLikedSubject.onNext(isItemLiked())
+    }
+    
+    private func toggleLikeStateForItem() -> Observable<Bool> {
+        Observable.create { [self] observer -> Disposable in
+                       
+            if Constants.userDefaults.bool(forKey:currentItem.id) {
+                Constants.userDefaults.removeObject(forKey: currentItem.id)
+                Constants.userDefaults.synchronize()
+                print("unlike an item \(currentItem.id)")
+                observer.onNext(false)
+                observer.onCompleted()
+            }else{
+                print("like an item \(currentItem.id)")
+                Constants.userDefaults.set(true, forKey: currentItem.id)
+                Constants.userDefaults.synchronize()
+                observer.onNext(true)
+                observer.onCompleted()
+            }
+            
+            return Disposables.create()
+        }
     }
     
     private func getItemTitle() -> String {
@@ -148,13 +182,17 @@ class ItemViewModel {
         }
     }
     
+    private func isItemLiked() -> Bool {
+        return Constants.userDefaults.bool(forKey:currentItem.id)
+    }
+    
 }
 
 struct ItemAttributesViewModel {
     
-    //Input: el data model de resultados de busqueda
+    //Input: Search results model
     var itemAttribute:ItemAttribute!
-    //Outputs: Data procesada para alimentar la celda de la tabla
+    //Outputs: Processed Data to feed the table cell
     var attributeKey: String = ""
     var attributeValue: String = ""
     

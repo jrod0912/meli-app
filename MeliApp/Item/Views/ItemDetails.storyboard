@@ -311,7 +311,8 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Detalles de la publicacion" id="w8h-he-I0l">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="heart" catalog="system" id="vxj-wN-8F4">
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="vxj-wN-8F4">
+                            <imageReference key="image" image="heart" catalog="system" symbolScale="medium"/>
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </barButtonItem>
                     </navigationItem>
@@ -324,6 +325,7 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
                         <outlet property="itemPrice" destination="Xdn-WY-Bgg" id="DVz-v1-eFJ"/>
                         <outlet property="itemTitle" destination="g3V-Fm-vIO" id="uK2-1U-uQw"/>
                         <outlet property="itemWarranty" destination="BzH-JN-WPX" id="DqK-KK-DOL"/>
+                        <outlet property="likeButton" destination="vxj-wN-8F4" id="sRS-xj-amE"/>
                         <outlet property="sellerAddress" destination="l4l-HG-K0f" id="xPy-nb-wog"/>
                     </connections>
                 </viewController>

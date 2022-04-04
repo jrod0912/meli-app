@@ -19,6 +19,7 @@ class ItemDetailsViewController: UIViewController {
     @IBOutlet weak var itemAttributesTable: UITableView!
     @IBOutlet weak var imageCarousel: UICollectionView!
     @IBOutlet weak var itemDescription: UILabel!
+    @IBOutlet weak var likeButton: UIBarButtonItem!
     
     private var disposeBag = DisposeBag()
     private var viewModel = ItemViewModel()
@@ -29,7 +30,8 @@ class ItemDetailsViewController: UIViewController {
         //TODO: Suscriptions (falta like)
         setupLoadingView()
         registerTableViewCell()
-        //TODO: Data binding (no creo que haga falta)
+        bindData()
+        self.likeButton.image =  Constants.Images.unlikeImage
     }
     
     func prepareView(itemId: String) {
@@ -103,6 +105,7 @@ extension ItemDetailsViewController {
         showLoadingViewSubscription()
         loadItemDataSubscription()
         loadItemDescriptionSubscription()
+        likeItemSubscription()
     }
     
     private func loadItemDataSubscription(){
@@ -132,6 +135,21 @@ extension ItemDetailsViewController {
                 (show) ? self.loadingView.startAnimating() : self.loadingView.stopAnimating()
             }
         }).disposed(by: disposeBag)
+    }
+    
+    private func likeItemSubscription() {
+        viewModel.showLikedSubject.subscribe(onNext:{ [weak self] liked in
+            guard let self = self else { return }
+            DispatchQueue.main.async{
+                self.likeButton.image = (liked) ? Constants.Images.likeImage : Constants.Images.unlikeImage
+            }
+        }).disposed(by: disposeBag)
+    }
+
+    private func bindData(){
+        likeButton.rx.tap
+            .bind(to: viewModel.likeItemSubject)
+            .disposed(by: disposeBag)
     }
 
 }

@@ -10,6 +10,8 @@ import UIKit
 
 struct Constants {
     
+    static let userDefaults = UserDefaults.standard
+    
     struct Identifiers {
         static let SEARCH_ITEM_VIEW_CELL = "SearchItemViewCell"
         static let IMAGES_CAROUSEL_VIEW_CELL = "imageCarouselCell"
@@ -25,6 +27,8 @@ struct Constants {
     
     struct Images {
         static let placeholderImage: UIImage = UIImage(systemName: "photo.on.rectangle.angled")!
+        static let unlikeImage: UIImage = UIImage(systemName: "heart")!
+        static let likeImage: UIImage = UIImage(systemName: "heart.fill")!
         static let cache = URLCache.shared
     }
 }

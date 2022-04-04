@@ -1,4 +1,4 @@
-## MeliApp Challenge
+# MeliApp Challenge
 
 ![demo_gif](ezgif.com-gif-maker.gif)
 
@@ -8,7 +8,11 @@ Para el desarrollo de este ejercicio escogí el patrón de arquitectura **MVVM (
 
 ![MVVM](https://assets.alexandria.raywenderlich.com/books/rxs/images/0bac92f0c3f01a900078203549ed6255699df19761dd15f0578ffb981948c302/original.png)
 
-"diagrama y estructura del proyecto (capturas)"
+## Estructura
+### Estructura general del proyecto
+![general_structure](general_structure.png)
+### Estructura de funcionalidades
+![feature_structure](feature_structure.png)
 
 ## Funcionalidades / requerimientos
 
@@ -17,7 +21,7 @@ Para el desarrollo de este ejercicio escogí el patrón de arquitectura **MVVM (
 - [x] Visualización de detalles de un producto
 - [x] Marcar producto como favorito
 - [x] Ver producto en la página de Mercadolibre (Comprar)
-- [] Listado de favoritos (WIP)
+- [x] Listado de favoritos (WIP)
 
 ## Librerias de 3ros
 
@@ -38,7 +42,7 @@ WIP
 | **api.mercadolibre.com** | /items/**{{itemID}}**/descripcion | GET | Obtener descripción de un item/publicación | **ItemDescriptionModel** |
 | **api.mercadolibre.com** | /sites/**{{siteID}}**/search?q=**{{itemID}}** | GET | Obtener items de una consulta de búsqueda | **SearchResultModel** |
 
-## Especificaciones Entorno
+## Especificaciones Entorno de Desarrollo
 
 | **Spec** | **Version** | **Descripción** |
 |---|:---:|---|

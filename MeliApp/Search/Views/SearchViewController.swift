@@ -12,6 +12,7 @@ import RxCocoa
 class SearchViewController: UIViewController {
 
     @IBOutlet weak var searchItemsTableView: UITableView!
+    @IBOutlet weak var tabBarView: UITabBar!
     
     private var searchBarController = UISearchController()
     private var disposeBag = DisposeBag()
@@ -22,13 +23,13 @@ class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setNavigationBarImageView()
         setupLoadingView()
         setupSubscriptions()
         setupTableView()
         configureSearchBarController()
         bindSearchData()
+        self.tabBarView.selectedItem = self.tabBarView.items?.first
     }
     
     func setNavigationBarImageView() {
@@ -83,7 +84,7 @@ class SearchViewController: UIViewController {
         guard let controller = storyboard?.instantiateViewController(withIdentifier: Constants.Identifiers.ITEM_DETAILS_VIEW_CONTROLLER) as? ItemDetailsViewController else {
             return
         }
-        controller.prepareView(itemId: searchResultVM.id)
+        controller.prepareView(itemVM: searchResultVM)
         navigationController?.pushViewController(controller, animated: true)
     }
         
@@ -190,6 +191,8 @@ extension SearchViewController {
             .itemSelected
             .bind(to: viewModel.selectedItemId)
             .disposed(by: disposeBag)
+        
+        
     }
     
     func shouldFetchMoreData() -> Bool {
@@ -200,4 +203,12 @@ extension SearchViewController {
         let shouldFetch = ((scrollPosition - 100) > totalOffset) && (scrollPosition > 0)
         return shouldFetch
     }
+}
+
+extension SearchViewController: UITabBarDelegate {
+    
+    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        
+    }
+    
 }

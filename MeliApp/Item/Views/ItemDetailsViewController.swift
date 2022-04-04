@@ -66,7 +66,7 @@ class ItemDetailsViewController: UIViewController {
     
 }
 
-extension ItemDetailsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension ItemDetailsViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.numberOfImages
@@ -80,6 +80,7 @@ extension ItemDetailsViewController: UICollectionViewDelegate, UICollectionViewD
         }
         return UICollectionViewCell()
     }
+    
 }
 
 extension ItemDetailsViewController: UITableViewDelegate, UITableViewDataSource {
@@ -94,6 +95,20 @@ extension ItemDetailsViewController: UITableViewDelegate, UITableViewDataSource 
         let vm = viewModel.getViewModelForCell(indexPathRow: indexPath.row)
         cell.configureCell(with:vm.attributeKey, value: vm.attributeValue, oddStyle: (indexPath.row % 2 == 0))
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return (collectionView.frame.width - 200)
+    }
+        
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        
+        let inset = (collectionView.frame.width - 200)/2
+        return UIEdgeInsets(top: 0, left: inset, bottom: 0, right: inset)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return (collectionView.frame.width - 200)
     }
 }
 

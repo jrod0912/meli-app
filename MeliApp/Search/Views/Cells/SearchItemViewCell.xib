@@ -20,20 +20,20 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cPE-xZ-EoO" customClass="SearchItemContainerView" customModule="MeliApp" customModuleProvider="target">
-                        <rect key="frame" x="20" y="8" width="280" height="160"/>
+                        <rect key="frame" x="20" y="8" width="280" height="184"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="ZD2-z0-uZz">
-                                <rect key="frame" x="-7.5" y="-4" width="295" height="168"/>
+                                <rect key="frame" x="-7.5" y="1" width="295" height="182"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SUh-E4-4Qc">
-                                        <rect key="frame" x="0.0" y="14" width="140" height="140"/>
+                                        <rect key="frame" x="0.0" y="21" width="140" height="140"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="140" id="PU4-aP-E4b"/>
                                             <constraint firstAttribute="height" constant="140" id="yCb-0p-fEY"/>
                                         </constraints>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="1GY-1b-WIE">
-                                        <rect key="frame" x="155" y="22" width="140" height="124"/>
+                                        <rect key="frame" x="155" y="29" width="140" height="124"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nueva Mac Mini M1 (2020) 8 Core Cpu-gpu - 512 Gb - 8gb Ram" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oNH-Zk-GPM">
                                                 <rect key="frame" x="0.0" y="0.0" width="140" height="46.5"/>
@@ -70,7 +70,6 @@
                             <constraint firstItem="ZD2-z0-uZz" firstAttribute="centerX" secondItem="cPE-xZ-EoO" secondAttribute="centerX" id="F7s-Wo-t8c"/>
                             <constraint firstItem="ZD2-z0-uZz" firstAttribute="centerY" secondItem="cPE-xZ-EoO" secondAttribute="centerY" id="iTt-za-JrO"/>
                             <constraint firstItem="ZD2-z0-uZz" firstAttribute="height" secondItem="cPE-xZ-EoO" secondAttribute="height" multiplier="0.611111" constant="69.999999999999986" id="k3v-Gk-WPL"/>
-                            <constraint firstAttribute="height" constant="160" id="rqc-yh-9BE"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">

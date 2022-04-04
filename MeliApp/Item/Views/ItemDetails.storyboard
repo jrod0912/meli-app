@@ -268,11 +268,13 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o3r-mZ-VKp">
-                                        <rect key="frame" x="287" y="18" width="83" height="31"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" title="Comprar">
-                                            <fontDescription key="titleFontDescription" style="UICTFontTextStyleHeadline"/>
-                                        </buttonConfiguration>
+                                        <rect key="frame" x="295" y="18" width="75" height="33"/>
+                                        <color key="backgroundColor" name="AccentColor"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="contentEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Comprar"/>
                                         <connections>
                                             <action selector="permalinkButtonAction:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="c5w-Nc-vRI"/>
                                         </connections>
@@ -333,6 +335,9 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
     <resources>
         <image name="heart" catalog="system" width="128" height="109"/>
         <image name="photo.on.rectangle.angled" catalog="system" width="128" height="100"/>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="textColor">
             <color red="0.36078431372549019" green="0.35686274509803922" blue="0.37647058823529411" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

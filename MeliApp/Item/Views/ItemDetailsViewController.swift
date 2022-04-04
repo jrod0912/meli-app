@@ -126,7 +126,7 @@ extension ItemDetailsViewController {
     }
     
     private func showLoadingViewSubscription() {
-        viewModel.showLoadingSubject.debug().subscribe(onNext:{ [weak self] show in
+        viewModel.showLoadingSubject.subscribe(onNext:{ [weak self] show in
             guard let self = self else { return }
             DispatchQueue.main.asyncAfter(deadline: .now() + ((show) ? 0.0 : 1.5)) {
                 (show) ? self.loadingView.startAnimating() : self.loadingView.stopAnimating()

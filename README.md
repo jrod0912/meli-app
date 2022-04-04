@@ -1,6 +1,6 @@
 ## MeliApp Challenge
 
-"Breve descripción del proyecto agregar capturas de pantallas"
+![demo_gif](ezgif.com-gif-maker.gif)
 
 ## Arquitectura
 

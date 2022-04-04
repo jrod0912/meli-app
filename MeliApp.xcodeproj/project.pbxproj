@@ -50,7 +50,6 @@
 		95C3DA3727F1430A002FCB3D /* SearchItemViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95C3DA3527F1430A002FCB3D /* SearchItemViewCell.xib */; };
 		95D28C4927F3FC1C00ED69BF /* ItemImagesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D28C4827F3FC1C00ED69BF /* ItemImagesCollectionViewCell.swift */; };
 		95D28C4B27F4C7DA00ED69BF /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D28C4A27F4C7DA00ED69BF /* Errors.swift */; };
-		95E1923F27F2296E00D42B72 /* SearchItemContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E1923E27F2296E00D42B72 /* SearchItemContainerView.swift */; };
 		95E1924127F2597400D42B72 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E1924027F2597400D42B72 /* Constants.swift */; };
 		95FDF91327F3A16A00691176 /* NumberFormatter+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FDF91227F3A16A00691176 /* NumberFormatter+String.swift */; };
 		95FDF91527F3A51A00691176 /* ItemDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95FDF91427F3A51A00691176 /* ItemDetails.storyboard */; };
@@ -130,7 +129,6 @@
 		95C3DA3527F1430A002FCB3D /* SearchItemViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchItemViewCell.xib; sourceTree = "<group>"; };
 		95D28C4827F3FC1C00ED69BF /* ItemImagesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemImagesCollectionViewCell.swift; sourceTree = "<group>"; };
 		95D28C4A27F4C7DA00ED69BF /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
-		95E1923E27F2296E00D42B72 /* SearchItemContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchItemContainerView.swift; sourceTree = "<group>"; };
 		95E1924027F2597400D42B72 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		95FDF91227F3A16A00691176 /* NumberFormatter+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NumberFormatter+String.swift"; sourceTree = "<group>"; };
 		95FDF91427F3A51A00691176 /* ItemDetails.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ItemDetails.storyboard; sourceTree = "<group>"; };
@@ -396,7 +394,6 @@
 				95C3DA3327F142BC002FCB3D /* Cells */,
 				95C3DA2F27F14281002FCB3D /* SearchViewController.swift */,
 				95C3DA3127F142B5002FCB3D /* Search.storyboard */,
-				95E1923E27F2296E00D42B72 /* SearchItemContainerView.swift */,
 				9571EFE627F6569300CEA651 /* ErrorView.swift */,
 				9571EFE827F656A300CEA651 /* ErrorView.xib */,
 			);
@@ -731,7 +728,6 @@
 				95A1647527EF868E0099B438 /* SceneDelegate.swift in Sources */,
 				954B3FA527F1025A0085639F /* ItemModel.swift in Sources */,
 				95D28C4B27F4C7DA00ED69BF /* Errors.swift in Sources */,
-				95E1923F27F2296E00D42B72 /* SearchItemContainerView.swift in Sources */,
 				95A164B327EFA0680099B438 /* SearchModel.swift in Sources */,
 				954B3FAE27F119E80085639F /* UIImageView+URLSession.swift in Sources */,
 				9587CBA527F523A800EC824F /* ItemAttributesTableViewCell.swift in Sources */,
@@ -913,10 +909,11 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Search;
-				INFOPLIST_KEY_UIRequiresFullScreen = NO;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UIStatusBarHidden = NO;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortrait UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -946,10 +943,11 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Search;
-				INFOPLIST_KEY_UIRequiresFullScreen = NO;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UIStatusBarHidden = NO;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortrait UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (

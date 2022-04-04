@@ -150,6 +150,7 @@ extension SearchViewController {
         viewModel.showErrorSubject.subscribe(onNext:{ [weak self] error in
             guard let self = self else { return }
             DispatchQueue.main.asyncAfter(deadline: .now() + ((error) ? 1.5 : 0.0)) {
+                self.errorView.setupViewContentForError()
                 (!error) ? self.errorView.fadeOut() : self.errorView.fadeIn()
             }
         }).disposed(by: disposeBag)

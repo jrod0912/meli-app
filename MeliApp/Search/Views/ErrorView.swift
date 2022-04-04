@@ -15,7 +15,7 @@ class ErrorView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.alpha = 0.0 // Initial state not visible
+        //self.alpha = 0.0 // Initial state not visible
         commonInit()
     }
     
@@ -30,6 +30,12 @@ class ErrorView: UIView {
         
         viewFromXIB.frame = .zero
         addSubview(viewFromXIB)
+    }
+    
+    func setupViewContentForError() {
+        self.iconImageView.image = UIImage(systemName: "magnifyingglass.circle")
+        self.titleLabel.text = "No encontramos publicaciones"
+        self.messageLabel.text = "Revisa que la palabra esté bien escrita. También puedes probar con menos términos o más generales."
     }
     
     func fadeIn(duration: TimeInterval = 0.5) {

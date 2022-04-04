@@ -127,7 +127,7 @@ extension ItemDetailsViewController {
             DispatchQueue.main.async {
                 self.loadUIData()
                 self.itemAttributesTable.reloadData()
-                self.imageCarousel.reloadSections(IndexSet(integer: 0))
+                self.imageCarousel.reloadData()
             }
         }.disposed(by: disposeBag)
     }

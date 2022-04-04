@@ -19,7 +19,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cPE-xZ-EoO" customClass="SearchItemContainerView" customModule="MeliApp" customModuleProvider="target">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cPE-xZ-EoO">
                         <rect key="frame" x="20" y="8" width="280" height="184"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="ZD2-z0-uZz">
@@ -64,21 +64,16 @@
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="ZD2-z0-uZz" firstAttribute="width" secondItem="cPE-xZ-EoO" secondAttribute="width" multiplier="0.625" constant="120" id="0l3-ny-QZv"/>
                             <constraint firstItem="ZD2-z0-uZz" firstAttribute="centerX" secondItem="cPE-xZ-EoO" secondAttribute="centerX" id="F7s-Wo-t8c"/>
                             <constraint firstItem="ZD2-z0-uZz" firstAttribute="centerY" secondItem="cPE-xZ-EoO" secondAttribute="centerY" id="iTt-za-JrO"/>
                             <constraint firstItem="ZD2-z0-uZz" firstAttribute="height" secondItem="cPE-xZ-EoO" secondAttribute="height" multiplier="0.611111" constant="69.999999999999986" id="k3v-Gk-WPL"/>
                         </constraints>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                <real key="value" value="20"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
-                <color key="backgroundColor" systemColor="systemGray6Color"/>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="cPE-xZ-EoO" secondAttribute="trailing" constant="20" id="LNI-vS-5XZ"/>
                     <constraint firstItem="cPE-xZ-EoO" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="Nnc-e6-4LX"/>
@@ -104,9 +99,6 @@
         <namedColor name="textColor">
             <color red="0.36078431372549019" green="0.35686274509803922" blue="0.37647058823529411" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemGray6Color">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

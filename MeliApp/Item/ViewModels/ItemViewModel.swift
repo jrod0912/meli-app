@@ -9,7 +9,6 @@ import Foundation
 import RxSwift
 
 class ItemViewModel {
-    // TODO: Add loading and error views
     //Inputs
     private var itemProvider:ItemProviderProtocol!
     private var descriptionProvider:ItemDescriptionProviderProtocol!
@@ -42,7 +41,6 @@ class ItemViewModel {
     func initialize(){
         
         selectedItemIdSubject
-            .debug()
             .asObservable()
             .do(onNext: { _ in
                 self.showLoadingSubject.onNext(true)

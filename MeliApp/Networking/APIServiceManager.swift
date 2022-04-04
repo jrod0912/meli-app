@@ -19,7 +19,7 @@ class APIServiceManager <T:APIService> {
         self.service = service
         self.urlSession = urlSession
     }
-    // TODO: Use Custom Errors
+    
     func performAPIRequest(with requestParameters: T.APIRequestParametersType, completionHandler: @escaping (T.APIRequestResponseDataType?, Error?) -> ()) {
         if let urlRequest = service.createRequest(with: requestParameters) {
             urlSession.dataTask(with: urlRequest) { (data, response, error) in

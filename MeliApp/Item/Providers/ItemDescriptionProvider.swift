@@ -35,7 +35,6 @@ struct MockItemDescriptionProvider: ItemDescriptionProviderProtocol, MockProvide
     func getDescription(for itemId: String, completion: @escaping (Result<ItemDescriptionModel, Error>) -> ()) {
         let fileName = jsonFileName
         MockItemProvider.loadJsonDataFromFile(fileName, completion: { data in
-            //TODO: Mover logica para decoder en general
             if let json = data {
                 do {
                     let decodedJson = try JSONDecoder().decode(ItemDescriptionModel.self, from: json)

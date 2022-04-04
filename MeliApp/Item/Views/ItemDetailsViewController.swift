@@ -93,8 +93,6 @@ extension ItemDetailsViewController: UITableViewDelegate, UITableViewDataSource 
         cell.configureCell(with:vm.attributeKey, value: vm.attributeValue, oddStyle: (indexPath.row % 2 == 0))
         return cell
     }
-    
-    
 }
 
 //MARK: Reactive stuff

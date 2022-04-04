@@ -6,7 +6,7 @@
 //
 
 import Foundation
-//TODO: Solucionar problema con los atributos (valueName = null)
+
 struct ItemModel: Codable, Equatable {
         
     let id: String

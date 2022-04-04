@@ -1,0 +1,6 @@
+framework module Pods_MeliAppTests {
+  umbrella header "Pods-MeliAppTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

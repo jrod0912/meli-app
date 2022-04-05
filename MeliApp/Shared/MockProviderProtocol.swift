@@ -8,6 +8,8 @@
 import Foundation
 
 protocol MockProviderProtocol {
+    var jsonFileName:String! { get set }
+    init(jsonFileName: String)
     static func loadJsonDataFromFile(_ path: String, completion: (Data?) -> Void)
 }
 

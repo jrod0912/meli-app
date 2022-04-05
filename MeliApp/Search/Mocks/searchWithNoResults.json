@@ -1,0 +1,28 @@
+{
+    "site_id": "MCO",
+    "country_default_time_zone": "GMT-05:00",
+    "query": "\"a\"",
+    "paging": {
+        "total": 0,
+        "primary_results": 0,
+        "offset": 0,
+        "limit": 50
+    },
+    "results": [],
+    "sort": {
+        "id": "relevance",
+        "name": "Más relevantes"
+    },
+    "available_sorts": [
+        {
+            "id": "price_asc",
+            "name": "Menor precio"
+        },
+        {
+            "id": "price_desc",
+            "name": "Mayor precio"
+        }
+    ],
+    "filters": [],
+    "available_filters": []
+}

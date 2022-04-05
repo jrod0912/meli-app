@@ -30,10 +30,16 @@ struct ItemProvider: ItemProviderProtocol {
 
 struct MockItemProvider: ItemProviderProtocol, MockProviderProtocol {
     
-    var jsonFileName:String = "itemDetails"
+    var jsonFileName:String!
+    
+    init(jsonFileName: String) {
+        self.jsonFileName = jsonFileName
+    }
     
     func getItemById(itemId:String, completion: @escaping (Result<ItemModel, Error>) -> ()) {
-        let fileName = jsonFileName
+        
+        guard let fileName = jsonFileName else { return }
+        
         MockItemProvider.loadJsonDataFromFile(fileName, completion: { data in
             if let json = data {
                 do {
